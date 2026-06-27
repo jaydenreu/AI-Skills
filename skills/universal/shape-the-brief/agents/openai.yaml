@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shape the Brief"
+  short_description: "Turn decisions into an action brief"
+  default_prompt: "Use $shape-the-brief to turn our decisions into a concise action brief."

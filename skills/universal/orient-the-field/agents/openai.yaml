@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orient the Field"
+  short_description: "Set up context for any endeavor"
+  default_prompt: "Use $orient-the-field to set up the source of truth, decision log, and done rules for this project."

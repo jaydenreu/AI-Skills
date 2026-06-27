@@ -1,0 +1,4 @@
+interface:
+  display_name: "Carry the Step"
+  short_description: "Complete one focused step with proof"
+  default_prompt: "Use $carry-the-step to complete one focused step and show the evidence."

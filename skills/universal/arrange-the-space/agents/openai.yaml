@@ -1,0 +1,4 @@
+interface:
+  display_name: "Arrange the Space"
+  short_description: "Design a workspace for a task"
+  default_prompt: "Use $arrange-the-space to set up a workspace for a task or project."

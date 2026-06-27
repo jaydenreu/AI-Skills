@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explore the Terrain"
+  short_description: "Investigate ideas without overcommitting"
+  default_prompt: "Use $explore-the-terrain to explore this topic, compare paths, and recommend a next probe."

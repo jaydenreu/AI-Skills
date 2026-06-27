@@ -1,0 +1,4 @@
+interface:
+  display_name: "Practice the Skill"
+  short_description: "Build ability through deliberate practice"
+  default_prompt: "Use $practice-the-skill to create a deliberate practice loop for something I want to learn."

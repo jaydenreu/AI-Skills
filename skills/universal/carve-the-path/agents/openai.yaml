@@ -1,0 +1,4 @@
+interface:
+  display_name: "Carve the Path"
+  short_description: "Break work into verifiable steps"
+  default_prompt: "Use $carve-the-path to break this goal into small steps with evidence for each one."
