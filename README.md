@@ -1,6 +1,6 @@
 # AI Skills
 
-This repo contains a five-skill workflow pack for taking work from an unclear idea to a verified delivery slice.
+This repo contains a very general five-skill workflow pack for taking work from an unclear idea to a verified delivery slice.
 
 The skills are designed for software, business, analytics, operations, and project work. They are standalone skills: no skill requires another one to function. The order below is the recommended human workflow, not a dependency chain.
 
