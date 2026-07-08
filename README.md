@@ -14,6 +14,16 @@ The skills are designed for software, business, analytics, operations, and proje
 | `slice-the-work` | Break a brief into small vertical slices. | Ordered AFK/HITL slices with acceptance criteria and evidence. |
 | `deliver-the-slice` | Complete one slice without scope drift. | Delivered outcome, checks, evidence, review result, completion reference. |
 
+## Universal Interview Skills
+
+| Skill | Use it for | Output |
+| --- | --- | --- |
+| `grilling` | Stress-test a plan or design before building. | Resolved decisions, remaining ambiguity, accepted defaults, risks, next step. |
+| `clarify-the-aim` | Resolve ambiguity before action across broad work. | Durable decisions, open ambiguity, artifact expectations. |
+| `orient-the-field` | Set up operating context for a project or endeavor. | Source of truth, decision log, evidence, done rules. |
+
+The interview skills include their own ambiguity loops. They do not depend on an external grilling skill.
+
 ## Recommended Order
 
 For a new repo, business project, client workspace, or team workflow:
@@ -81,6 +91,13 @@ skills/
     slice-the-work/
       SKILL.md
     deliver-the-slice/
+      SKILL.md
+  universal/
+    grilling/
+      SKILL.md
+    clarify-the-aim/
+      SKILL.md
+    orient-the-field/
       SKILL.md
 ```
 
