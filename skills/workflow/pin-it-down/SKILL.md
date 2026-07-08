@@ -25,11 +25,23 @@ If missing and the work is substantial, recommend `/set-the-rails` first. Do not
 
 - Do not deliver the work.
 - Be direct. Push until delivery-relevant ambiguity is gone.
+- Keep an ambiguity ledger: blocker, defaultable, deferrable.
 - Ask one question at a time.
 - Recommend the answer before asking.
 - Use existing docs/data/code before asking when possible.
 - Challenge vague terms, hidden assumptions, weak defaults, and scope creep.
 - Capture only durable decisions.
+- Do not end while delivery blockers remain.
+
+## Ambiguity Loop
+
+Before the first question, inventory unresolved delivery decisions:
+
+```md
+A1: <unknown> | impact: <delivery impact> | default: <recommendation> | status: blocker/defaultable/deferrable
+```
+
+Ask in dependency order, starting with the blocker that unlocks the most downstream decisions. After each answer, record the decision, accepted default, or deferral, then update the ledger. Ask a narrowing follow-up when an answer stays broad: "simple", "polished", "soon", "better", "good", "reasonable", "done". Stop only when blockers are resolved and remaining ambiguity is defaulted or deferred.
 
 ## Cover
 
@@ -95,5 +107,6 @@ Return:
 
 - resolved decisions
 - open decisions
+- remaining ambiguity by blocker/defaultable/deferrable status
 - decision IDs
 - recommended next command, usually `/write-the-brief`

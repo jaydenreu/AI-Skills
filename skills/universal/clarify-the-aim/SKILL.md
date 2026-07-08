@@ -1,6 +1,6 @@
 ---
 name: clarify-the-aim
-description: Interview before action to resolve ambiguity, challenge assumptions, and capture durable decisions for any endeavor. Use when a goal, idea, request, project, analysis, learning plan, creative work, book, game, workspace, or personal change is too vague to execute without guessing.
+description: Interview before action to resolve ambiguity and capture decisions. Use when a goal, request, project, analysis, learning plan, creative work, workspace, or personal change is too vague to act on without guessing.
 ---
 
 # Clarify The Aim
@@ -23,11 +23,23 @@ If the operating context is missing and the work is substantial, recommend `orie
 ## Rules
 
 - Do not deliver the work.
+- Keep an ambiguity ledger: blocker, defaultable, deferrable.
 - Ask one question at a time.
 - Recommend a default before asking.
 - Use existing context before asking.
 - Challenge vague terms, weak defaults, scope creep, and hidden assumptions.
 - Capture durable decisions, not every thought.
+- Do not finish while action-changing blockers remain.
+
+## Ambiguity Loop
+
+Before the first question, list unresolved decisions:
+
+```md
+A1: <unknown> | impact: <why it changes action> | default: <recommendation> | status: blocker/defaultable/deferrable
+```
+
+Ask the highest-impact blocker first. After each answer, record the decision, default, or deferral, then update the ledger. Ask a follow-up when an answer stays vague: "simple", "polished", "soon", "better", "good", "reasonable", "done". Stop only when blockers are resolved and remaining ambiguity is defaulted or deferred.
 
 ## Cover
 
@@ -76,6 +88,7 @@ Return:
 
 - resolved decisions
 - open decisions
+- remaining ambiguity by blocker/defaultable/deferrable status
 - decision IDs or capture location
 - artifact or versioning expectations
 - recommended next skill, usually `shape-the-brief`, `explore-the-terrain`, or `carve-the-path`

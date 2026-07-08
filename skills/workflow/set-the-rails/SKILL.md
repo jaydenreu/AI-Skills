@@ -18,9 +18,21 @@ Purpose: interview the workspace, not the work. Establish how delivery will be m
 
 - Do not deliver project work.
 - Explore before deciding.
+- Keep a missing-rails ledger: blocker, defaultable, deferrable.
 - Ask one setup section at a time.
 - Reuse existing docs/tools. Do not create duplicates.
 - Keep public docs generic. Keep employer/client-specific details private unless approved.
+- Do not finish while source of truth, decision log, or done rules are blockers.
+
+## Missing Rails Loop
+
+Before deciding, list unresolved setup choices:
+
+```md
+R1: <unknown> | impact: <coordination impact> | default: <recommendation> | status: blocker/defaultable/deferrable
+```
+
+Resolve blockers first, update the ledger after each answer, and keep asking one setup section at a time until all blockers are resolved.
 
 ## Explore
 
@@ -84,5 +96,6 @@ Return:
 - glossary/domain location
 - status/label meanings
 - review/done rules
+- remaining missing rails, if any, with blocker/defaultable/deferrable status
 - changed files/docs
 - recommended next command

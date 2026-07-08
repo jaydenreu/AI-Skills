@@ -1,6 +1,6 @@
 ---
 name: orient-the-field
-description: Set up or reset context for any endeavor so a person or agent knows the aim, source of truth, decision log, materials, constraints, standards, cadence, evidence, and done rules. Use when starting or reorganizing a software project, analytics effort, creative work, learning plan, personal workspace, book, game, research dive, or any task where the operating context is unclear.
+description: Set up operating context across aim, source of truth, decisions, materials, constraints, evidence, and done rules. Use when starting or reorganizing a project, analytics effort, creative work, learning plan, workspace, research, or personal endeavor.
 ---
 
 # Orient The Field
@@ -14,6 +14,17 @@ Purpose: establish the operating context before doing the work.
 - Keep the setup as small as the endeavor allows.
 - Separate durable context from temporary scratch notes.
 - Make the next action obvious.
+- Keep a context ledger: blocker, defaultable, deferrable.
+
+## Context Loop
+
+Before deciding or writing, list unresolved context:
+
+```md
+C1: <unknown> | impact: <why work would drift> | default: <recommendation> | status: blocker/defaultable/deferrable
+```
+
+Ask the blocker that unlocks the most next action. After each answer, update the ledger. Stop only when source of truth, decision capture, evidence, and done rules are resolved or explicitly deferred.
 
 ## Map
 
@@ -94,5 +105,6 @@ Return:
 - decision log
 - materials and work surface
 - evidence, versioning, and done rules
+- remaining context gaps, if any, with blocker/defaultable/deferrable status
 - immediate next action
 - changed files, docs, boards, or workspace notes
