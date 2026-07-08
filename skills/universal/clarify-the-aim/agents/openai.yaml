@@ -1,4 +1,4 @@
 interface:
   display_name: "Clarify the Aim"
   short_description: "Resolve ambiguity before action"
-  default_prompt: "Use $clarify-the-aim to turn this messy idea into clear decisions before action."
+  default_prompt: "Use $clarify-the-aim to relentlessly interview me until action-changing ambiguity is reduced."

@@ -1,12 +1,12 @@
 ---
 name: pin-it-down
-description: Interview before delivery. Resolve ambiguity, challenge assumptions, and capture durable decisions.
+description: Relentlessly interview before delivery. Grill the plan, question delivery-relevant assumptions, reduce ambiguity, and capture durable decisions.
 disable-model-invocation: true
 ---
 
 # Pin It Down
 
-Purpose: make the work clear enough to execute without guessing.
+Purpose: make the work clear enough to execute without guessing by relentlessly questioning it until ambiguity is reduced.
 
 ## Preflight
 
@@ -24,7 +24,8 @@ If missing and the work is substantial, recommend `/set-the-rails` first. Do not
 ## Rules
 
 - Do not deliver the work.
-- Be direct. Push until delivery-relevant ambiguity is gone.
+- Relentlessly interview and grill the user until delivery-relevant ambiguity is reduced.
+- Question everything that could change scope, behaviour, evidence, risk, sequencing, ownership, or done.
 - Keep an ambiguity ledger: blocker, defaultable, deferrable.
 - Ask one question at a time.
 - Recommend the answer before asking.
@@ -41,7 +42,7 @@ Before the first question, inventory unresolved delivery decisions:
 A1: <unknown> | impact: <delivery impact> | default: <recommendation> | status: blocker/defaultable/deferrable
 ```
 
-Ask in dependency order, starting with the blocker that unlocks the most downstream decisions. After each answer, record the decision, accepted default, or deferral, then update the ledger. Ask a narrowing follow-up when an answer stays broad: "simple", "polished", "soon", "better", "good", "reasonable", "done". Stop only when blockers are resolved and remaining ambiguity is defaulted or deferred.
+Ask in dependency order, starting with the blocker that unlocks the most downstream decisions. Question every delivery-relevant assumption, one question at a time. After each answer, record the decision, accepted default, or deferral, then update the ledger. Ask a narrowing follow-up when an answer stays broad: "simple", "polished", "soon", "better", "good", "reasonable", "done". Stop only when blockers are resolved and remaining ambiguity is defaulted or deferred.
 
 ## Cover
 

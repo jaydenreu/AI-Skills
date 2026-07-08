@@ -9,7 +9,7 @@ The skills are designed for software, business, analytics, operations, and proje
 | Skill | Use it for | Output |
 | --- | --- | --- |
 | `set-the-rails` | Configure how a project or workspace is managed. | Source of truth, tracker, decision log, standards, done rules. |
-| `pin-it-down` | Interview before delivery and remove ambiguity. | Durable decisions, open blockers, decision IDs. |
+| `pin-it-down` | Relentlessly interview before delivery and question everything delivery-relevant. | Durable decisions, open blockers, decision IDs. |
 | `write-the-brief` | Turn resolved context into an execution-ready brief. | Brief with problem, goal, non-goals, behaviour, evidence, first slice. |
 | `slice-the-work` | Break a brief into small vertical slices. | Ordered AFK/HITL slices with acceptance criteria and evidence. |
 | `deliver-the-slice` | Complete one slice without scope drift. | Delivered outcome, checks, evidence, review result, completion reference. |
@@ -19,10 +19,12 @@ The skills are designed for software, business, analytics, operations, and proje
 | Skill | Use it for | Output |
 | --- | --- | --- |
 | `stress-test-the-plan` | Stress-test a plan or design before building. | Resolved decisions, remaining ambiguity, accepted defaults, risks, next step. |
-| `clarify-the-aim` | Resolve ambiguity before action across broad work. | Durable decisions, open ambiguity, artifact expectations. |
+| `clarify-the-aim` | Relentlessly reduce ambiguity before action across broad work. | Durable decisions, open ambiguity, artifact expectations. |
 | `orient-the-field` | Set up operating context for a project or endeavor. | Source of truth, decision log, evidence, done rules. |
 
 The interview skills include their own ambiguity loops. They do not depend on an external interview skill.
+
+`clarify-the-aim` is the broad pre-action interview for vague endeavors. `pin-it-down` is the narrower delivery gate before `write-the-brief`; it should be more ruthless because its job is to make execution unambiguous. If that distinction stops being useful, collapse to `pin-it-down` as the single interview gate.
 
 ## Recommended Order
 
@@ -55,7 +57,7 @@ For a ready-made issue, ticket, or slice:
 
 Start with `set-the-rails` when the project machinery is unclear. Use it when no one has agreed where work lives, where decisions are recorded, what "done" means, or who reviews what.
 
-Start with `pin-it-down` when the workflow exists but the work itself is still fuzzy. This skill should challenge assumptions, ask one question at a time, and capture durable decisions before anyone starts building.
+Start with `pin-it-down` when the workflow exists but the work itself is still fuzzy. This skill should relentlessly interview, question everything delivery-relevant one question at a time, and capture durable decisions before anyone starts building.
 
 Start with `write-the-brief` when the decisions are mostly resolved and you need a concise delivery brief. It should not restart the interview unless a missing answer would change delivery.
 
@@ -103,7 +105,7 @@ skills/
 
 ## Design Notes
 
-- The skills are user-invoked with `disable-model-invocation: true`.
+- The workflow skills are user-invoked with `disable-model-invocation: true`; universal skills may trigger from their descriptions.
 - The pack is intentionally broad enough for non-code work and strict enough to prevent delivery drift.
 - The sequence favours evidence, review, and explicit completion records over internal activity.
 - Each skill should produce the smallest useful artifact for its stage.

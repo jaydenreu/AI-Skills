@@ -1,11 +1,11 @@
 ---
 name: clarify-the-aim
-description: Interview before action to resolve ambiguity and capture decisions. Use when a goal, request, project, analysis, learning plan, creative work, workspace, or personal change is too vague to act on without guessing.
+description: Relentlessly interview before action to reduce ambiguity and capture decisions. Use when a goal, request, project, analysis, learning plan, creative work, workspace, or personal change is too vague to act on without guessing.
 ---
 
 # Clarify The Aim
 
-Purpose: make the endeavor clear enough to act on without hidden guessing.
+Purpose: make the endeavor clear enough to act on without hidden guessing by relentlessly questioning it until ambiguity is reduced.
 
 ## Preflight
 
@@ -23,6 +23,8 @@ If the operating context is missing and the work is substantial, recommend `orie
 ## Rules
 
 - Do not deliver the work.
+- Relentlessly interview the user until action-changing ambiguity is reduced.
+- Question everything that could change outcome, audience, scope, constraints, evidence, risk, or order.
 - Keep an ambiguity ledger: blocker, defaultable, deferrable.
 - Ask one question at a time.
 - Recommend a default before asking.
@@ -39,7 +41,7 @@ Before the first question, list unresolved decisions:
 A1: <unknown> | impact: <why it changes action> | default: <recommendation> | status: blocker/defaultable/deferrable
 ```
 
-Ask the highest-impact blocker first. After each answer, record the decision, default, or deferral, then update the ledger. Ask a follow-up when an answer stays vague: "simple", "polished", "soon", "better", "good", "reasonable", "done". Stop only when blockers are resolved and remaining ambiguity is defaulted or deferred.
+Ask the highest-impact blocker first. Question every action-changing assumption, one question at a time. After each answer, record the decision, default, or deferral, then update the ledger. Ask a follow-up when an answer stays vague: "simple", "polished", "soon", "better", "good", "reasonable", "done". Stop only when blockers are resolved and remaining ambiguity is defaulted or deferred.
 
 ## Cover
 
