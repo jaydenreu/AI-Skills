@@ -18,11 +18,11 @@ The skills are designed for software, business, analytics, operations, and proje
 
 | Skill | Use it for | Output |
 | --- | --- | --- |
-| `grilling` | Stress-test a plan or design before building. | Resolved decisions, remaining ambiguity, accepted defaults, risks, next step. |
+| `stress-test-the-plan` | Stress-test a plan or design before building. | Resolved decisions, remaining ambiguity, accepted defaults, risks, next step. |
 | `clarify-the-aim` | Resolve ambiguity before action across broad work. | Durable decisions, open ambiguity, artifact expectations. |
 | `orient-the-field` | Set up operating context for a project or endeavor. | Source of truth, decision log, evidence, done rules. |
 
-The interview skills include their own ambiguity loops. They do not depend on an external grilling skill.
+The interview skills include their own ambiguity loops. They do not depend on an external interview skill.
 
 ## Recommended Order
 
@@ -93,7 +93,7 @@ skills/
     deliver-the-slice/
       SKILL.md
   universal/
-    grilling/
+    stress-test-the-plan/
       SKILL.md
     clarify-the-aim/
       SKILL.md

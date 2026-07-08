@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stress Test the Plan"
+  short_description: "Stress-test a plan before building"
+  default_prompt: "Use $stress-test-the-plan to interview me relentlessly about this plan until the blockers are clear."

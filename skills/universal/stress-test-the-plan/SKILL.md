@@ -1,9 +1,9 @@
 ---
-name: grilling
-description: Interview relentlessly about a plan or design. Use when the user wants to stress-test a plan before building, sharpen a design, expose hidden assumptions, or uses any grill trigger phrase.
+name: stress-test-the-plan
+description: Stress-test a plan or design before building. Use when the user wants a relentless interview to sharpen a plan, expose hidden assumptions, resolve blockers, or pressure-test a design.
 ---
 
-# Grilling
+# Stress Test The Plan
 
 Purpose: stress-test a plan until blockers are resolved and remaining ambiguity is explicit.
 
