@@ -1,6 +1,6 @@
 ---
 name: model-route
-description: Select and orchestrate the lowest-cost credible model, reasoning effort, and concrete agent/thread route for a task. Use only when explicitly invoked with $model-route for task-intensity routing, named agent assignments, recommendation, route-and-execute, route auditing, delegation, parallel workstreams, writer/reviewer splits, or model-cost decisions. Do not use for ordinary low-risk requests that need no routing decision.
+description: Select and orchestrate the lowest-cost credible model, reasoning effort, and concrete agent/thread route for a task or issue. Use only when explicitly invoked with $model-route for issue/slice routing, task-intensity routing, named agent assignments, recommendation, route-and-execute, route auditing, delegation, parallel workstreams, writer/reviewer splits, or model-cost decisions. Do not use for ordinary low-risk requests that are not being published as issues and need no routing decision.
 ---
 
 # Model Route
@@ -8,6 +8,22 @@ description: Select and orchestrate the lowest-cost credible model, reasoning ef
 Use the lowest-cost route that is credible for the risk, then escalate when evidence shows that route is inadequate. Treat capability as a fit decision, not a prestige ladder.
 
 Read [references/model-catalog.md](references/model-catalog.md) before naming current models, reasoning levels, availability, prices, or credits, or applying an organization overlay. If its review date is stale enough to affect the decision, verify the material facts from its official sources before routing. Read [references/orchestration-patterns.md](references/orchestration-patterns.md) before delegating, producing workstream contracts, or evaluating the smoke cases.
+
+## Current GPT-5.6 model set
+
+**Reviewed:** 2026-07-16
+
+This skill intentionally lists the current GPT-5.6 models directly so issue routes remain explicit. The maintainer accepts that this block is static and must be updated when OpenAI changes the lineup.
+
+| Model | Identifier | Use in this skill |
+| --- | --- | --- |
+| **GPT-5.6 Luna** | `gpt-5.6-luna` | T0 exact, clear, repeatable, high-volume, lowest-cost GPT-5.6 work |
+| **GPT-5.6 Terra** | `gpt-5.6-terra` | T1 routine and T2 demanding everyday implementation, exploration, and tool use |
+| **GPT-5.6 Sol** | `gpt-5.6-sol`; `gpt-5.6` is the Sol alias | T3 critical, T4 exceptional coupled, T5 orchestration, synthesis, and independent review |
+
+Use Low/Light for quick well-scoped work, Medium for ordinary planning, High or Extra High (`xhigh`) for difficult multi-step or critical work, Max for one hardest coupled problem, and Ultra only for a broad route with meaningful independent subagent work. Organization policy and actual surface availability still override this default.
+
+When maintaining this static mapping, update this section, the task-intensity table below, [references/model-catalog.md](references/model-catalog.md), and the issue-routing examples together. Verify against [OpenAI's Codex models page](https://learn.chatgpt.com/docs/models) and [GPT-5.6 model guidance](https://developers.openai.com/api/docs/guides/latest-model).
 
 ## Respect ownership and policy
 
@@ -44,6 +60,19 @@ If the active repository already has an authoritative model-routing or orchestra
 - **Audit**: Compare an intended or completed route with visible configuration, execution evidence, outcome quality, usage, and residual risk. Do not execute or redo the underlying task unless separately asked.
 
 Infer the mode from the request. Default to Recommend when the user asks only what should be used. Never treat a recommendation as authorization to execute.
+
+## Route issues and slices
+
+Treat the issue or slice as the execution source of truth when one is provided.
+
+1. Read the issue, parent brief, decisions, dependencies, acceptance criteria, non-goals, and existing route.
+2. Classify and route it before execution.
+3. Use a compact route for non-material T0-T1 work. Use the full routing manifest for T2-T5 or any material work.
+4. Write the `Execution route` block from [references/orchestration-patterns.md](references/orchestration-patterns.md) into the issue when tracker mutation is authorized. Otherwise return the exact block for the caller to publish.
+5. Record the route date, model-source review date, exact root/discovery/writer/reviewer assignments, resolved GPT-5.6 model, reasoning, parallelism, and validation.
+6. In Recommend mode, stop after routing the issue. In Route and execute mode, preserve the intended route and append the actual visible route, deviations, review, and validation after delivery.
+
+Do not leave an issue merely marked "routing required." Either attach the compact/full route or mark it `pending` with the exact blocker. Re-run routing when requirements, materiality, model availability, or the maintained model date changes materially.
 
 ## Classify the task
 
@@ -114,12 +143,12 @@ Apply this table as the default. Resolve each capability class to the active mod
 
 | Intensity | Work | Root route | Discovery route | Writer route | Reviewer route | Delegation |
 | --- | --- | --- | --- | --- | --- | --- |
-| **T0 Exact** | Mechanical, local, deterministic | Root/`default`; economy; low/Light | None | Root; or one `worker` at economy/low only for a real batch | None beyond exact checks | No child by default |
-| **T1 Routine** | Normal bounded work with settled acceptance | `default`; balanced; medium | Optional `explorer`; balanced; low or medium | One `worker`; balanced; medium | If material, fresh read-only `default`; frontier; high | At most one useful child at a time |
-| **T2 Demanding** | Bounded but cross-file, multi-step, or context-heavy | `default`; balanced; high | `explorer`; balanced; medium | One `worker`; balanced; high | If material, custom reviewer or fresh read-only `default`; frontier; high | Parallel read-only discovery allowed; one writer |
-| **T3 Critical** | Security, privacy, finance, governed data, migrations, access, ambiguous high-impact logic | `default`; frontier; high | `explorer`; balanced/medium for inventory, frontier/high when its judgment is consequential | One `worker` or matching custom specialist; frontier; xhigh/Extra High | Matching custom reviewer, else fresh read-only `default`; frontier; high | Parallel read-only audits allowed; exactly one writer |
-| **T4 Exceptional coupled** | One unusually hard, tightly coupled problem needing one coherent model | Root/`default`; max; Max | Optional targeted `explorer`; balanced; medium | Root is the sole writer; max; Max | Fresh read-only `default` or matching custom reviewer; frontier; high or xhigh | No parallel implementation |
-| **T5 Broad independent** | Several genuinely independent workstreams with a synthesis gate | `default`; frontier; high, or ultra only after its gate | One `explorer` per useful read stream; balanced; medium by default | One `worker` per disjoint write scope, each routed at T1-T3 | Matching custom reviewer or fresh read-only `default`; frontier; high on integrated output | Fewest direct children that cover the independent work |
+| **T0 Exact** | Mechanical, local, deterministic | Root/`default`; `gpt-5.6-luna`; low/Light | None | Root; or one `worker` on Luna/low only for a real batch | None beyond exact checks | No child by default |
+| **T1 Routine** | Normal bounded work with settled acceptance | `default`; `gpt-5.6-terra`; medium | Optional `explorer`; Terra; low or medium | One `worker`; Terra; medium | If material, fresh read-only `default`; `gpt-5.6-sol`; high | At most one useful child at a time |
+| **T2 Demanding** | Bounded but cross-file, multi-step, or context-heavy | `default`; `gpt-5.6-terra`; high | `explorer`; Terra; medium | One `worker`; Terra; high | If material, custom reviewer or fresh read-only `default`; `gpt-5.6-sol`; high | Parallel read-only discovery allowed; one writer |
+| **T3 Critical** | Security, privacy, finance, governed data, migrations, access, ambiguous high-impact logic | `default`; `gpt-5.6-sol`; high | `explorer`; Terra/medium for inventory, Sol/high when its judgment is consequential | One `worker` or matching custom specialist; Sol; xhigh/Extra High | Matching custom reviewer, else fresh read-only `default`; Sol; high | Parallel read-only audits allowed; exactly one writer |
+| **T4 Exceptional coupled** | One unusually hard, tightly coupled problem needing one coherent model | Root/`default`; `gpt-5.6-sol`; Max | Optional targeted `explorer`; Terra; medium | Root is the sole writer; Sol; Max | Fresh read-only `default` or matching custom reviewer; Sol; high or xhigh | No parallel implementation |
+| **T5 Broad independent** | Several genuinely independent workstreams with a synthesis gate | `default`; `gpt-5.6-sol`; high, or Ultra only after its gate | One `explorer` per useful read stream; Luna/low for exact extraction, Terra/medium by default, Sol/high for consequential judgment | One `worker` per disjoint write scope, each routed at T1-T3 | Matching custom reviewer or fresh read-only `default`; Sol; high on integrated output | Fewest direct children that cover the independent work |
 
 For T5, assign every child its own T0-T3 intensity; do not give all children the root's expensive route. Critical classification always implies at least T3. Materiality controls mandatory independent review, not whether the agent and reasoning route must be explicit.
 
@@ -151,8 +180,12 @@ Before material execution, print the full manifest:
 ROUTING MANIFEST
 
 Mode:
+Issue or slice:
 Task class:
 Material: yes/no — rationale
+Routing detail: compact/full
+Route reviewed:
+Model source reviewed:
 Outcome:
 Source of truth:
 Risk:
@@ -249,6 +282,7 @@ ROUTING OUTCOME
 Intended route:
 Actual visible route:
 Material: yes/no — rationale
+Issue or slice updated:
 Threads or agents used:
 Agent/model/reasoning assignments:
 Parallel workstreams completed:
@@ -268,4 +302,4 @@ Judge success by the accepted outcome, correctness, evidence, validation, rework
 
 ## Completion criteria
 
-Complete Recommend only after the route is classified, proportionate, explained, and explicitly non-executing. Complete Audit only after intended, configured, visible, and unknown facts are separated and residual risk is stated. Complete Route and execute only after every required wave has reported, contradictions are synthesized, overlapping work has one writer, material work has independent review, corrections are revalidated, and the visible route and remaining uncertainty are reported.
+Complete Recommend only after the route is classified, proportionate, explained, and explicitly non-executing. Complete Audit only after intended, configured, visible, and unknown facts are separated and residual risk is stated. Complete Route and execute only after every required wave has reported, contradictions are synthesized, overlapping work has one writer, material work has independent review, corrections are revalidated, and the visible route and remaining uncertainty are reported. For issue-backed work, completion also requires the compact/full route or delivery routing outcome to be written into the issue when mutation is authorized, or returned as an exact publishable block otherwise.

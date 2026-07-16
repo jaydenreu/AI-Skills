@@ -1,7 +1,7 @@
 interface:
   display_name: "Model Route"
   short_description: "Route models, agents, cost, and review"
-  default_prompt: "Use $model-route to print the lowest-cost credible task-intensity route, naming the agent type, model, and reasoning level for the root and every worker."
+  default_prompt: "Use $model-route to write a current GPT-5.6 execution route into this task or issue, naming every agent, model, reasoning level, review, and validation assignment."
 
 policy:
   allow_implicit_invocation: false

@@ -1,7 +1,6 @@
 ---
 name: deliver-the-slice
-description: Deliver one slice without scope drift, using evidence, checks, review, and a clear completion record.
-disable-model-invocation: true
+description: Deliver one routed slice without scope drift, using its explicit model and agent route, evidence, checks, review, and a clear completion record.
 ---
 
 # Deliver The Slice
@@ -17,33 +16,38 @@ Purpose: complete one vertical slice safely.
 - Prefer simple interfaces and fewer handoffs.
 - Avoid pass-through abstractions and process theatre.
 - Finish with evidence and review.
+- Read and honor the issue's `Execution route` before changing anything.
+- If the route is missing, pending, materially stale, or inconsistent with the slice, invoke `$model-route Recommend` and update the issue before execution.
 
 ## Process
 
-1. Read the slice, parent brief, decisions, acceptance criteria, and non-goals.
-2. Inspect current state and relevant docs/data/code/systems.
-3. State a short plan:
+1. Read the slice, parent brief, decisions, acceptance criteria, non-goals, and `Execution route`.
+2. Confirm the route names the intensity, materiality, root, discovery, writer, reviewer, GPT-5.6 model, reasoning, parallelism, and validation. Refresh it with `$model-route Recommend` when required.
+3. Inspect current state and relevant docs/data/code/systems.
+4. State a short plan:
    - outcome to prove
    - evidence/checks
    - likely files/docs/systems/processes touched
    - review path
-4. Deliver vertically:
+   - intended agent/model/reasoning route
+5. Deliver vertically:
    - create or run the smallest failing/absent check where practical
    - make the smallest useful change
    - run the focused check
    - refine while still passing
    - repeat
-5. Run relevant checks:
+6. Run relevant checks:
    - focused tests/reports/reconciliations
    - typecheck/lint for code
    - data validation for analytics
    - process/control checks for ops
    - sign-off/review where required
-6. Verify every acceptance criterion.
-7. Review separately:
+7. Verify every acceptance criterion.
+8. Review separately:
    - Spec: matches brief/slice and avoids scope creep
    - Standards: follows project rules, language, and conventions
-8. Record completion in the tracker/source of truth.
+9. Complete `Delivery routing outcome` in the issue with actual visible agent/model/reasoning facts, unknowns, deviations, review, corrections, validation, and acceptance safety.
+10. Record completion in the tracker/source of truth.
 
 ## Software loop
 
@@ -71,5 +75,7 @@ Return:
 - decision/criteria coverage
 - evidence/checks and results
 - review result
+- intended route, actual visible route, and deviations
+- agents/threads used and model/reasoning facts that were visible
 - completion reference: commit, issue, doc, report, approval, or tracker update
 - true follow-up work only

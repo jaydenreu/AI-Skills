@@ -38,7 +38,7 @@ The interview skills include their own ambiguity loops. They do not depend on an
 | --- | --- | --- |
 | `$model-route` | Recommend, execute, or audit the lowest-cost credible model, reasoning, and concrete agent/thread route. | Exact root, explorer, writer, reviewer, model, reasoning, wave, and validation assignments. |
 
-`model-route` is explicitly invoked. It composes after the relevant orientation, exploration, shaping, and decomposition work and before material execution when routing is worth deciding. It is not a mandatory workflow stage and does not replace existing execution skills.
+`model-route` is explicitly invoked. It composes after the relevant orientation, exploration, shaping, and decomposition work and before execution. It is a mandatory handoff for published issues, using a lightweight compact route for non-material T0-T1 work, and it does not replace existing execution skills.
 
 ```text
 $model-route Recommend the model, reasoning effort, and agent/thread route for this task. Do not execute it.
@@ -52,14 +52,18 @@ The default intensity routing is explicit:
 
 | Intensity | Agent route | Reasoning |
 | --- | --- | --- |
-| T0 Exact | Root/`default`; no child | Low/Light |
-| T1 Routine | `default` root; optional `explorer`; one `worker` | Medium |
-| T2 Demanding | `default` root; `explorer`; one `worker`; reviewer if material | High writer; medium explorer; high reviewer |
-| T3 Critical | Frontier `default` lead; one `worker` or custom specialist; separate reviewer | High lead; xhigh writer; high reviewer |
-| T4 Exceptional coupled | Root/`default` is sole writer; separate reviewer | Max root; high/xhigh reviewer |
-| T5 Broad independent | `default` orchestrator; one `explorer` or `worker` per independent stream | High root; each child routed at T1-T3; Ultra only after its gate |
+| T0 Exact | Root/`default`; `gpt-5.6-luna`; no child | Low/Light |
+| T1 Routine | `default`, optional `explorer`, and one `worker` on `gpt-5.6-terra` | Medium |
+| T2 Demanding | Terra `default`/`explorer`/`worker`; Sol reviewer if material | High writer; medium explorer; high reviewer |
+| T3 Critical | `gpt-5.6-sol` lead, writer or specialist, and separate reviewer | High lead; xhigh writer; high reviewer |
+| T4 Exceptional coupled | Sol root/`default` is sole writer; separate Sol reviewer | Max root; high/xhigh reviewer |
+| T5 Broad independent | Sol `default` orchestrator; Luna/Terra/Sol children by stream intensity | High root; each child routed at T1-T3; Ultra only after its gate |
 
 See the [orchestration patterns](skills/ai/model-route/references/orchestration-patterns.md#task-intensity-route-examples) for the exact agent contracts and examples.
+
+### Issue routing lifecycle
+
+Every issue created by `slice-the-work` carries an `Execution route`. It invokes `$model-route Recommend` after the slice is defined, stores a compact route for non-material T0-T1 work or the full manifest for T2-T5/material work, and records the model-source review date. `deliver-the-slice` consumes that route and writes the actual visible route, deviations, review, corrections, and validation back into the issue.
 
 For managed organizational distribution, package the skill as a plugin when that becomes useful; this repository keeps it as a directly authored skill.
 
@@ -72,6 +76,7 @@ For a new repo, business project, client workspace, or team workflow:
 /pin-it-down
 /write-the-brief
 /slice-the-work
+$model-route Recommend each accepted slice and write its execution route into the issue
 /deliver-the-slice
 ```
 
@@ -81,16 +86,18 @@ For an existing project where the rails already exist:
 /pin-it-down
 /write-the-brief
 /slice-the-work
+$model-route Recommend each accepted slice and write its execution route into the issue
 /deliver-the-slice
 ```
 
 For a ready-made issue, ticket, or slice:
 
 ```text
+$model-route Recommend and write or refresh the issue's execution route
 /deliver-the-slice
 ```
 
-When a material task needs an explicit model, thread, parallelism, or review decision, invoke `$model-route` after the brief or slices are trustworthy and before execution.
+Every published slice receives a route. Use the compact form for non-material T0-T1 work and the full manifest for T2-T5 or material work before execution.
 
 ## How To Choose The Entry Point
 
@@ -104,7 +111,7 @@ Start with `slice-the-work` when you have a brief or plan and need small, review
 
 Start with `deliver-the-slice` when one slice is already clear enough to build, verify, review, and record as complete.
 
-Invoke `$model-route` when model cost, reasoning depth, delegation, parallel workstreams, one-writer control, or independent-agent review needs an explicit decision. Skip it for ordinary low-risk work with no meaningful routing choice.
+Invoke `$model-route` for every published issue and whenever model cost, reasoning depth, delegation, parallel workstreams, one-writer control, or independent-agent review needs an explicit decision. Skip it only for ordinary low-risk ad hoc work that is not represented by an issue and has no meaningful routing choice.
 
 ## Loading Guidance
 
@@ -120,7 +127,7 @@ When in doubt:
 4. If the brief is clear but the work is too large, run `slice-the-work`.
 5. If a slice is clear and ready, run `deliver-the-slice`.
 
-Insert `$model-route` between decomposition and execution only when routing is material.
+After decomposition, write a `$model-route` result into every issue before execution; compact routes keep T0-T1 work lightweight.
 
 ## Repo Structure
 
@@ -143,8 +150,12 @@ skills/
       SKILL.md
     slice-the-work/
       SKILL.md
+      agents/
+        openai.yaml
     deliver-the-slice/
       SKILL.md
+      agents/
+        openai.yaml
   universal/
     orient-the-field/
     clarify-the-aim/
@@ -159,8 +170,8 @@ skills/
 
 ## Design Notes
 
-- The workflow skills use the repository's legacy `disable-model-invocation: true` convention; universal skills may trigger from their descriptions.
-- `model-route` uses the current `agents/openai.yaml` policy `allow_implicit_invocation: false`, so `$model-route` remains explicit-only.
+- Older workflow skills retain the repository's legacy `disable-model-invocation: true` convention; updated workflow skills migrate to current `agents/openai.yaml` policy metadata.
+- `model-route`, `slice-the-work`, and `deliver-the-slice` use `allow_implicit_invocation: false`, so all three remain explicit-only.
 - The pack is intentionally broad enough for non-code work and strict enough to prevent delivery drift.
 - The sequence favours evidence, review, and explicit completion records over internal activity.
 - Each skill should produce the smallest useful artifact for its stage.

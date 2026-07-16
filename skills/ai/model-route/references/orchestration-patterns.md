@@ -6,6 +6,7 @@ Use this reference when `model-route` delegates work, needs reusable route examp
 
 - [Workstream plan contract](#workstream-plan-contract)
 - [Workstream result contract](#workstream-result-contract)
+- [Issue execution-route contract](#issue-execution-route-contract)
 - [Independence gate](#independence-gate)
 - [Task-intensity route examples](#task-intensity-route-examples)
 - [Execution-wave patterns](#execution-wave-patterns)
@@ -93,6 +94,40 @@ Recommended next action:
 
 `Status` should be one of `complete`, `partial`, or `blocked`. Confirmed findings must be separated from hypotheses. A worker that changed files must list them explicitly and stay inside its permitted scope.
 
+## Issue execution-route contract
+
+Put this block in every issue or delivery slice. A non-material T0-T1 issue may use a compact one-line manifest; T2-T5 and all material issues require the full manifest from `../SKILL.md`.
+
+```md
+## Execution route
+
+Routing status: routed | pending
+Routing detail: compact | full
+Intensity: T0 | T1 | T2 | T3 | T4 | T5
+Material: yes | no — rationale
+Route reviewed: YYYY-MM-DD
+Model source reviewed: YYYY-MM-DD
+
+Root: <agent type/name> | <GPT-5.6 model> | <reasoning>
+Discovery: <none or agent/model/reasoning assignments>
+Writer: <root, worker, or configured custom agent> | <model> | <reasoning>
+Reviewer: <none or independent agent/model/reasoning>
+Parallelism: <none or dependency-aware workstreams>
+Validation: <tests, checks, reconciliation, review>
+
+Routing manifest: <compact line or full manifest>
+
+### Delivery routing outcome
+
+Actual visible route: <verified facts and unknowns>
+Route deviations: <none or explanation>
+Review and corrections: <results>
+Validation result: <results>
+Safe to accept: yes | no — rationale
+```
+
+`slice-the-work` creates and populates the initial block through `$model-route Recommend`. `deliver-the-slice` consumes it and completes `Delivery routing outcome`. Preserve intended versus actual visible facts; do not rewrite an unavailable runtime model as if it were verified.
+
 ## Independence gate
 
 Treat a stream as parallel-ready only when all required conditions hold:
@@ -127,7 +162,7 @@ Use these as concrete defaults; resolve capability classes to current models thr
 
 ```text
 T0 Exact
-Root: default | economy | low
+Root: default | gpt-5.6-luna | low
 Children: none
 Writer: root
 Reviewer: none; use deterministic validation
@@ -135,42 +170,42 @@ Reviewer: none; use deterministic validation
 
 ```text
 T1 Routine
-Root: default | balanced | medium
-Discovery: explorer | balanced | low/medium, only if context is missing
-Writer: worker | balanced | medium
-Reviewer: separate default | frontier | high, only when material
+Root: default | gpt-5.6-terra | medium
+Discovery: explorer | gpt-5.6-terra | low/medium, only if context is missing
+Writer: worker | gpt-5.6-terra | medium
+Reviewer: separate default | gpt-5.6-sol | high, only when material
 ```
 
 ```text
 T2 Demanding
-Root: default | balanced | high
-Discovery: explorer | balanced | medium
-Writer: worker | balanced | high
-Reviewer: configured specialist or separate default | frontier | high, when material
+Root: default | gpt-5.6-terra | high
+Discovery: explorer | gpt-5.6-terra | medium
+Writer: worker | gpt-5.6-terra | high
+Reviewer: configured specialist or separate default | gpt-5.6-sol | high, when material
 ```
 
 ```text
 T3 Critical
-Root: default | frontier | high
-Discovery: explorer | balanced/medium for inventory; frontier/high for consequential judgment
-Writer: worker or configured specialist | frontier | xhigh
-Reviewer: configured domain reviewer or separate default | frontier | high
+Root: default | gpt-5.6-sol | high
+Discovery: explorer | gpt-5.6-terra/medium for inventory; gpt-5.6-sol/high for consequential judgment
+Writer: worker or configured specialist | gpt-5.6-sol | xhigh
+Reviewer: configured domain reviewer or separate default | gpt-5.6-sol | high
 ```
 
 ```text
 T4 Exceptional coupled
-Root and sole writer: default | max | Max
-Discovery: optional targeted explorer | balanced | medium
-Reviewer: separate default or configured specialist | frontier | high/xhigh
+Root and sole writer: default | gpt-5.6-sol | Max
+Discovery: optional targeted explorer | gpt-5.6-terra | medium
+Reviewer: separate default or configured specialist | gpt-5.6-sol | high/xhigh
 Parallel implementation: no
 ```
 
 ```text
 T5 Broad independent
-Root orchestrator: default | frontier | high, or Ultra after the Ultra gate
-Read streams: explorer | balanced | medium by default
+Root orchestrator: default | gpt-5.6-sol | high, or Ultra after the Ultra gate
+Read streams: explorer | gpt-5.6-luna/low for exact extraction, gpt-5.6-terra/medium by default, gpt-5.6-sol/high for consequential judgment
 Write streams: one worker per disjoint scope | each routed at T1-T3
-Integrated reviewer: configured specialist or separate default | frontier | high
+Integrated reviewer: configured specialist or separate default | gpt-5.6-sol | high
 ```
 
 ## Execution-wave patterns
@@ -212,6 +247,12 @@ $model-route Recommend the model, reasoning effort, and agent/thread route for t
 ```
 
 Require the response to name the exact built-in or configured custom agent, capability/resolved model, and reasoning level for the root, every child, the writer, and the reviewer.
+
+### Route an issue
+
+```text
+$model-route Recommend and write the execution route into this issue. Use a compact route for non-material T0-T1 work or the full manifest for T2-T5/material work. Include the route date and GPT-5.6 model-source review date. Do not execute the issue.
+```
 
 ### Bounded execution
 
@@ -265,43 +306,43 @@ Evaluate these without launching paid nested tasks. For each case, produce the r
 
 **Scenario:** Rename one settled heading in a fixed file and verify the exact text.
 
-**Expected:** `Material: no`; root/`default` at economy/low; no child; root writer; no reviewer beyond exact comparison or diff check.
+**Expected:** The issue contains a compact routed block dated against the model source; `Material: no`; root/`default` on `gpt-5.6-luna` at low; no child; root writer; no reviewer beyond exact comparison or diff check.
 
 ### Case 2: normal bounded implementation
 
 **Scenario:** Add a specified endpoint following an existing pattern with known acceptance tests.
 
-**Expected:** T1; `default` root at balanced/medium; one `worker` writer at balanced/medium; proportionate tests; an explicit materiality assessment. This scenario is normally `Material: no` when it is local, reversible, and strongly covered by the known tests; use a separate frontier/high `default` reviewer only when a materiality gate or repository policy applies.
+**Expected:** The issue contains a compact routed block; T1; `default` root and one `worker` writer on `gpt-5.6-terra` at medium; proportionate tests; an explicit materiality assessment. This scenario is normally `Material: no` when it is local, reversible, and strongly covered by the known tests; use a separate `gpt-5.6-sol`/high `default` reviewer only when a materiality gate or repository policy applies.
 
 ### Case 3: ambiguous high-risk logic
 
 **Scenario:** Change a governed financial metric whose definitions conflict across sources.
 
-**Expected:** T3 and `Material: yes`; `default` root at frontier/high; one `worker` or custom specialist at frontier/xhigh; explicit source-of-truth and invariants; unresolved semantics stop execution; a matching custom reviewer or separate read-only `default` at frontier/high reviews after implementation.
+**Expected:** The issue contains a full routing manifest; T3 and `Material: yes`; `default` root on `gpt-5.6-sol`/high; one `worker` or custom specialist on Sol/xhigh; explicit source-of-truth and invariants; unresolved semantics stop execution; a matching custom reviewer or separate read-only `default` on Sol/high reviews after implementation.
 
 ### Case 4: one tightly coupled difficult problem
 
 **Scenario:** Resolve a rare cross-system consistency failure that needs one coherent causal model.
 
-**Expected:** T4 and `Material: yes` because shared cross-system behavior is affected; root/`default` is the sole writer at max/Max; no artificial fan-out; targeted validation; a separate `default` or matching custom reviewer at frontier/high or xhigh.
+**Expected:** The issue contains a full routing manifest; T4 and `Material: yes` because shared cross-system behavior is affected; root/`default` is the sole writer on `gpt-5.6-sol`/Max; no artificial fan-out; targeted validation; a separate `default` or matching custom reviewer on Sol/high or xhigh.
 
 ### Case 5: four independent audit dimensions
 
 **Scenario:** Review an integrated change separately for security, data integrity, test gaps, and accessibility.
 
-**Expected:** T5; `default` root at frontier/high; four `explorer` read-only streams at balanced/medium if concurrency and value justify them; wait for every result; reconcile and synthesize; no writer.
+**Expected:** The issue contains a full routing manifest; T5; `default` root on `gpt-5.6-sol`/high; four `explorer` read-only streams on `gpt-5.6-terra`/medium if concurrency and value justify them; wait for every result; reconcile and synthesize; no writer.
 
 ### Case 6: apparently parallel but coupled implementation
 
 **Scenario:** Database, API, UI, and documentation edits all depend on one new business definition.
 
-**Expected:** Detect shared semantics and likely shared files; `default` root owns synthesis; keep implementation under one sequential `worker` routed at the resulting T2 or T3 intensity; allow `explorer` discovery and independent review in parallel; no competing definitions.
+**Expected:** The issue contains a full routing manifest; detect shared semantics and likely shared files; `default` root owns synthesis; keep implementation under one sequential `worker` routed on Terra or Sol at the resulting T2 or T3 intensity; allow `explorer` discovery and independent review in parallel; no competing definitions.
 
 ### Case 7: parallel isolated implementations
 
 **Scenario:** Two accepted slices affect separate packages and have no shared interfaces or decisions.
 
-**Expected:** T5; `default` root at frontier/high; one `worker` per disjoint scope with its own T1-T3 route and separate worktree or artifact where appropriate; explicit integration owner; combined tests; separate frontier/high `default` or custom review of the integrated output.
+**Expected:** The issue contains a full routing manifest; T5; `default` root on `gpt-5.6-sol`/high; one `worker` per disjoint scope with its own Luna/Terra/Sol T1-T3 route and separate worktree or artifact where appropriate; explicit integration owner; combined tests; separate Sol/high `default` or custom review of the integrated output.
 
 ### Case 8: stale model catalogue
 

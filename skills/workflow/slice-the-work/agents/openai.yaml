@@ -1,0 +1,7 @@
+interface:
+  display_name: "Slice The Work"
+  short_description: "Create routed, agent-ready delivery issues"
+  default_prompt: "Use $slice-the-work to create vertical delivery issues and attach a current $model-route execution route to each one."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,7 +1,6 @@
 ---
 name: slice-the-work
-description: Break a brief or plan into small vertical slices that each produce a verifiable outcome.
-disable-model-invocation: true
+description: Break a brief or plan into small vertical slices that each produce a verifiable outcome and carry an explicit model and agent execution route.
 ---
 
 # Slice The Work
@@ -16,6 +15,8 @@ Purpose: turn a brief into agent-ready delivery slices.
 - Keep slices small enough to deliver and review.
 - Mark human input clearly.
 - Avoid isolated setup tickets unless they unblock multiple slices.
+- Put an `Execution route` in every published issue or slice.
+- Use `$model-route Recommend` after the slice is defined; do not guess the model, agent, or reasoning assignment.
 
 ## Vertical slicing
 
@@ -47,7 +48,10 @@ Do not create separate schema/API/UI/process/reporting tickets unless they are t
    - `AFK`: agent can proceed without more input
    - `HITL`: human decision/review required
 6. Ask for granularity approval unless told to proceed.
-7. Publish to the agreed tracker/source of truth.
+7. Invoke `$model-route Recommend` for each accepted slice and attach its issue execution-route block:
+   - compact for non-material T0-T1;
+   - full manifest for T2-T5 or material work.
+8. Publish the routed slices to the agreed tracker/source of truth.
 
 ## Slice format
 
@@ -83,6 +87,22 @@ Workstreams touched:
 
 ## Out of scope
 What this slice must not expand into.
+
+## Execution route
+
+Routing status: routed | pending
+Routing detail: compact | full
+Intensity: T0 | T1 | T2 | T3 | T4 | T5
+Material: yes | no — rationale
+Route reviewed: YYYY-MM-DD
+Model source reviewed: YYYY-MM-DD
+Root: <agent | GPT-5.6 model | reasoning>
+Discovery: <none or assignments>
+Writer: <agent | model | reasoning>
+Reviewer: <none or independent assignment>
+Parallelism: <none or dependency-aware streams>
+Validation: <required evidence>
+Routing manifest: <compact line or full manifest>
 ```
 
 ## Done
@@ -93,6 +113,7 @@ Return:
 - dependencies
 - AFK/HITL status
 - decision coverage
+- routing status, intensity, and compact/full manifest
 - created refs, if published
 
 Do not rewrite the parent brief except by linking slices.

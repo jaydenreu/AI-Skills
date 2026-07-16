@@ -8,7 +8,7 @@
 
 **Scope:** Current OpenAI model, Codex surface, reasoning, subagent, and pricing facts used by `model-route`
 
-This file is the single source of truth for volatile provider facts. The stable routing policy lives in `../SKILL.md`. Organization and repository policy override this catalogue.
+This file is the detailed source of truth for volatile provider facts. At the maintainer's request, `../SKILL.md` deliberately mirrors the current GPT-5.6 names and task-intensity assignments so issues remain explicit. Update both files together. Organization and repository policy override this catalogue.
 
 ## Contents
 
@@ -31,7 +31,7 @@ Before a material recommendation about current models, prices, credits, or avail
 3. Use only official provider documentation.
 4. Mark unavailable or unexposed facts as unknown; never fill gaps from memory.
 
-Do not rewrite `SKILL.md` merely because a model name, identifier, rate, or entitlement changes. Update this catalogue and rerun the routing smoke cases.
+When a GPT-5.6 name, identifier, or task-intensity assignment changes, update this catalogue and the maintained model block in `../SKILL.md` together, then rerun the routing smoke cases. Rates, credits, surface availability, and detailed entitlements remain catalogue-only.
 
 ## Capability-class mapping
 
@@ -39,7 +39,7 @@ These are portable defaults, not entitlements or mandatory choices. Choose the c
 
 | Capability class | Current mapping | Default reasoning | Use |
 | --- | --- | --- | --- |
-| **economy** | **ChatGPT/Codex credit route:** GPT-5.4 mini, `gpt-5.4-mini`, when exposed. **API-key/SDK route:** start with GPT-5.4 nano, `gpt-5.4-nano`, for credible simple high-volume classification, extraction, ranking, and bounded subagent work; move to mini when nano is insufficient. Use GPT-5.6 Luna, `gpt-5.6-luna`, when the newer family's broader capability or context is needed. | Low/Light | Clear, repeatable, low-risk, high-volume work with exact verification. Choose the cheapest approved option that remains credible on the active surface. |
+| **economy** | **Default issue route:** GPT-5.6 Luna, `gpt-5.6-luna`. **Optional cross-family cost override:** use GPT-5.4 mini for an exposed ChatGPT/Codex credit route or GPT-5.4 nano, `gpt-5.4-nano`, for credible simple high-volume API classification, extraction, ranking, and bounded subagent work when organization policy allows it. | Low/Light | Clear, repeatable, low-risk, high-volume work with exact verification. Issue routes stay on the maintained GPT-5.6 family unless an explicit approved override is recorded. |
 | **balanced** | GPT-5.6 Terra, `gpt-5.6-terra` | Medium; High when measured need justifies it | Everyday bounded implementation, tool use, and read-heavy investigation. |
 | **frontier** | GPT-5.6 Sol, `gpt-5.6-sol`; `gpt-5.6` is a verified alias to Sol | High or Extra High (`xhigh`) | Ambiguous, difficult, high-value, critical, architectural, synthesis, or review work. |
 | **max** | GPT-5.6 Sol with Max reasoning | Max | One exceptional, tightly coupled, quality-first problem. This is a reasoning route, not a separate model slug. |
@@ -181,7 +181,7 @@ Organization policy overrides the generic catalogue, and repository policy overr
 
 1. Verify current official provider documentation.
 2. Update the catalogue's last-reviewed date.
-3. Update model mappings, identifiers, reasoning support, surface availability, and rates.
+3. Update model mappings, identifiers, reasoning support, surface availability, and rates; mirror GPT-5.6 names and task-intensity assignments into `../SKILL.md`.
 4. Run the routing smoke cases in [orchestration-patterns.md](orchestration-patterns.md).
 5. Inspect recommendations that changed and confirm they still follow lowest-cost-credible routing.
 6. Record material policy changes in the repository's decision or change record, when one exists.
