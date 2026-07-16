@@ -5,7 +5,9 @@ description: Turn a brief into routed, verifiable vertical issues.
 
 # Slice The Work
 
-Create the fewest small end-to-end slices that prove the brief. Slice by outcome, not layer, team, tool, or activity; avoid setup-only tickets unless they unblock several slices.
+Create the fewest small end-to-end slices that prove the brief. These slices must be vertical (frontend, backend, and database) rather than horizontal. Slice by outcome, not layer, team, tool, or activity; avoid setup-only tickets unless they unblock several slices.
+
+The reason for this is that all features must be verifiable by the developer where possible - changes in a backend service must be visible in the frontend and also where required write to database (or query from).
 
 ## Process
 
