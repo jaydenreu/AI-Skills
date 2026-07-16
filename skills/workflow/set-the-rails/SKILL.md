@@ -1,18 +1,18 @@
 ---
 name: set-the-rails
-description: Establish a user-confirmed Rails Contract for how project work is managed.
+description: Establish a user-confirmed Rails Contract, including AI routing policy.
 ---
 
 # Set The Rails
 
-Discover facts from the workspace; interview the user for policy. Existing artifacts are evidence, not authority unless explicitly designated. Do not deliver project work or silently invent governance.
+Discover workspace facts; interview the user for policy. Treat artifacts as evidence, not authority unless designated. Do not deliver work or invent governance.
 
-Run a decision-complete interview: every coordination-changing choice must be confirmed, accepted as a default, or explicitly deferred. Track each as `R1: <choice> | impact | recommended default | blocker/defaultable/deferrable`.
+Run a decision-complete interview: confirm, default, or defer every coordination-changing choice. Track each as `R1: <choice> | impact | recommended default | blocker/defaultable/deferrable`.
 
 ## Interview
 
-1. Locate the tracker, source of truth, decision and glossary locations, PRD location, standards, statuses, owners, review path, and completion evidence.
-2. Separate observed facts from unresolved choices. Do not ask for discoverable facts or treat conventions as approved policy.
+1. Locate the tracker, source of truth, decisions/glossary, PRD location, AI routing policy, standards, statuses, owners, review path, and completion evidence.
+2. Separate facts from choices. Do not ask for discoverable facts or treat conventions as policy.
 3. Ask the highest-impact unresolved choice one at a time, then wait:
 
 ```md
@@ -32,6 +32,7 @@ Tracker:
 Source of truth:
 Decisions / glossary:
 PRD location:
+AI routing policy: <location | none; use $model-route defaults>
 Statuses:
 Standards:
 Reviewers:
@@ -40,4 +41,4 @@ Evidence location:
 Status: ready | <remaining gaps>
 ```
 
-Finish only after the user confirms the contract or accepts its defaults, with no blocking gap in source of truth, decisions, PRD location, review, or done rules. Return the contract, changed locations, gaps by status, and `$pin-it-down` as the next skill when a concrete delivery exists.
+Finish only after the user confirms the contract or accepts its defaults, with no blocking gap in source of truth, decisions, PRD location, AI routing policy, review, or done rules. Return the contract, changed locations, gaps by status, and `$pin-it-down` as the next skill when a concrete delivery exists.

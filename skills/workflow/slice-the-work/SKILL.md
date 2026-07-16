@@ -1,6 +1,6 @@
 ---
 name: slice-the-work
-description: Turn an accepted PRD into routed vertical issues; allow only named, justified exceptions.
+description: Turn an accepted PRD into vertical issues, name justified exceptions, and route every accepted issue with $model-route.
 ---
 
 # Slice The Work
@@ -38,7 +38,7 @@ Use the smallest unblocker and link the slices it enables. "Backend first" and t
 2. Draft dependency-ordered slices preserving requirement and decision IDs.
 3. Test each: Is its outcome observable, are all required layers included, and can it be verified independently? If not, redraw it or name an exception.
 4. Label `AFK` or `HITL`, check coverage, and obtain granularity approval unless told to proceed.
-5. Invoke `$model-route Recommend` once for the accepted set, using compact routes for non-material T0-T1 and full routes for T2-T5/material work; then publish.
+5. After granularity approval, invoke `$model-route Recommend` once for the accepted set, write its compact or full route into every issue, then publish.
 
 ```md
 # <slice>

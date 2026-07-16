@@ -5,7 +5,7 @@ description: Assign GPT-5.6 models, reasoning, agents, review, and validation to
 
 # Model Route
 
-Choose the lowest-cost credible route for the accepted outcome and risk. Organization policy, applicable `AGENTS.md`, and the accepted source of truth override these defaults. Default to **Recommend** and stop after routing; execute or audit only when explicitly requested.
+Choose the lowest-cost credible route for the accepted outcome and risk. Apply organization policy, applicable `AGENTS.md`, any Rails Contract AI routing policy, and the accepted source of truth before these defaults. Default to **Recommend** and stop after routing; execute or audit only when explicitly requested.
 
 ## Maintained GPT-5.6 map
 
@@ -23,7 +23,7 @@ Read [model-catalog.md](references/model-catalog.md) only when the route depends
 
 ## Route
 
-1. Read the task or issue, source of truth, outcome, constraints, risk, coupling, validation, dependencies, and existing route.
+1. Read applicable routing policy, then the task or issue, source of truth, outcome, constraints, risk, coupling, validation, dependencies, and existing route.
 2. If a consequential source-of-truth choice is unresolved, return `pending` with the exact blocker.
 3. Select one intensity and explicit route:
 

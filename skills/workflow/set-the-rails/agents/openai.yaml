@@ -1,7 +1,7 @@
 interface:
   display_name: "Set The Rails"
   short_description: "Confirm project rails with the user"
-  default_prompt: "Use $set-the-rails to inspect this repo and interview me until its Rails Contract is confirmed."
+  default_prompt: "Use $set-the-rails to inspect this repo and interview me until its Rails Contract, including AI routing policy, is confirmed."
 
 policy:
   allow_implicit_invocation: false
