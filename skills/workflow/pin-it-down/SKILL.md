@@ -1,17 +1,23 @@
 ---
 name: pin-it-down
-description: Resolve delivery-changing ambiguity and record durable decisions.
+description: Run a decision-complete interview that resolves delivery-changing ambiguity.
 ---
 
 # Pin It Down
 
-Interrogate a proposed delivery until execution no longer requires consequential guessing. Do not deliver the work.
+Resolve a proposed delivery until execution no longer requires consequential guessing. Do not deliver the work or decide project rails here.
 
-Inspect available code, data, and documents before asking. Keep an ambiguity ledger:
+## Preflight
+
+Inspect available code, data, and documents and read the Rails Contract. For substantial project work, if that contract is missing, conflicting, or stale, stop and recommend `$set-the-rails`; do not perform setup here.
+
+## Interview
+
+Keep an ambiguity ledger:
 
 `A1: <unknown> | delivery impact | recommended default | blocker/defaultable/deferrable`
 
-Ask one highest-impact question at a time, recommend an answer, explain why it matters in one sentence, then wait. Update the ledger after every answer; challenge vague terms and scope expansion.
+Ask the highest-impact question one at a time, recommend an answer, explain why it matters in one sentence, then wait. Update the ledger after every answer; challenge vague terms and scope expansion.
 
 Cover only decisions that can change outcome, users, behavior, interfaces or data, permissions, failure states, constraints, ownership, risk, sequencing, non-goals, evidence, rollout, or review. For software, include schema/access, API/UI behavior, migration, and tests only when relevant.
 
@@ -24,4 +30,4 @@ Requirement:
 Evidence:
 ```
 
-Finish only when blockers are resolved and remaining ambiguity is accepted as defaultable or deferrable. Return decision IDs, open items by status, and the next step—normally `write-the-brief`.
+Finish only when every delivery-changing unknown is resolved, accepted as a default, or explicitly deferred. Return decision IDs, open items by status, and `$write-the-brief` as the next skill to publish the canonical PRD.

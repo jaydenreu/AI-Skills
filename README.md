@@ -8,9 +8,9 @@ Portable, stage-specific skills for framing, planning, routing, and delivering s
 
 | Skill | Job | Completion artifact |
 | --- | --- | --- |
-| `set-the-rails` | Establish tracker, source of truth, decisions, standards, review, and done rules. | Workflow contract |
-| `pin-it-down` | Resolve delivery-changing ambiguity one question at a time. | Durable decisions and open-item ledger |
-| `write-the-brief` | Synthesize accepted decisions into an execution-ready brief. | Delivery brief |
+| `set-the-rails` | Establish a user-confirmed tracker, source of truth, PRD location, decisions, standards, review, and done rules. | Rails Contract |
+| `pin-it-down` | Resolve delivery-changing ambiguity through a decision-complete interview. | Durable decisions and open-item ledger |
+| `write-the-brief` | Publish accepted decisions as the canonical execution-ready PRD. | Canonical PRD |
 | `slice-the-work` | Create vertical, verifiable issues and batch-route them. | Ordered routed issues |
 | `deliver-the-slice` | Execute one routed issue, validate, review, and record completion. | Verified outcome and completion record |
 
@@ -44,6 +44,8 @@ Recommended routed delivery:
 set-the-rails → pin-it-down → write-the-brief → slice-the-work
                → $model-route Recommend → deliver-the-slice
 ```
+
+`write-the-brief` publishes the canonical PRD consumed by `slice-the-work`.
 
 `slice-the-work` invokes `$model-route` once for the accepted slice set and writes a route into every published issue. `deliver-the-slice` consumes that route and refreshes it only when missing, pending, materially stale, or invalidated by changed requirements. This is the library's only required cross-skill integration.
 

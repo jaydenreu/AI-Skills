@@ -1,7 +1,7 @@
 interface:
-  display_name: "Write The Brief"
-  short_description: "Create a concise delivery brief"
-  default_prompt: "Use $write-the-brief to turn the accepted decisions into an execution-ready brief."
+  display_name: "Write The PRD"
+  short_description: "Publish the canonical delivery PRD"
+  default_prompt: "Use $write-the-brief to publish the accepted decisions as this project's canonical PRD."
 
 policy:
   allow_implicit_invocation: false
