@@ -1,10 +1,10 @@
 # AI Skills
 
-This repo contains a very general five-skill workflow pack for taking work from an unclear idea to a verified delivery slice.
+This repository contains portable skills for framing, planning, delivering, and routing work across software, analytics, research, documentation, product, operations, and other knowledge work.
 
-The skills are designed for software, business, analytics, operations, and project work. They are standalone skills: no skill requires another one to function. The order below is the recommended human workflow, not a dependency chain.
+The skills are standalone: no skill requires another one to function. The delivery order below is a recommended human workflow, not a dependency chain.
 
-## Skills
+## Delivery Workflow Skills
 
 | Skill | Use it for | Output |
 | --- | --- | --- |
@@ -14,17 +14,54 @@ The skills are designed for software, business, analytics, operations, and proje
 | `slice-the-work` | Break a brief into small vertical slices. | Ordered AFK/HITL slices with acceptance criteria and evidence. |
 | `deliver-the-slice` | Complete one slice without scope drift. | Delivered outcome, checks, evidence, review result, completion reference. |
 
-## Universal Interview Skills
+## Universal Skills
 
 | Skill | Use it for | Output |
 | --- | --- | --- |
-| `stress-test-the-plan` | Stress-test a plan or design before building. | Resolved decisions, remaining ambiguity, accepted defaults, risks, next step. |
-| `clarify-the-aim` | Relentlessly reduce ambiguity before action across broad work. | Durable decisions, open ambiguity, artifact expectations. |
 | `orient-the-field` | Set up operating context for a project or endeavor. | Source of truth, decision log, evidence, done rules. |
+| `clarify-the-aim` | Relentlessly reduce ambiguity before action across broad work. | Durable decisions, open ambiguity, artifact expectations. |
+| `explore-the-terrain` | Explore uncertain topics, options, and tradeoffs before committing. | Evidence, options, confidence, and recommended next move. |
+| `shape-the-brief` | Turn resolved context and decisions into an action brief. | Outcome, boundaries, evidence, and first useful step. |
+| `carve-the-path` | Break a goal or brief into small ordered steps. | Dependency-aware steps with evidence and human boundaries. |
+| `arrange-the-space` | Design or reset a workspace for focused work. | Deliberate layout, materials, routines, and reset rules. |
+| `carry-the-step` | Execute one focused step without scope drift. | Verified result and completion evidence. |
+| `practice-the-skill` | Build ability through deliberate practice and feedback. | Practice loop, evidence, feedback, and progression. |
+| `stress-test-the-plan` | Stress-test a plan or design before building. | Resolved decisions, remaining ambiguity, accepted defaults, risks, next step. |
 
 The interview skills include their own ambiguity loops. They do not depend on an external interview skill.
 
 `clarify-the-aim` is the broad pre-action interview for vague endeavors. `pin-it-down` is the narrower delivery gate before `write-the-brief`; it should be more ruthless because its job is to make execution unambiguous. If that distinction stops being useful, collapse to `pin-it-down` as the single interview gate.
+
+## Model Routing and Orchestration
+
+| Skill | Use it for | Output |
+| --- | --- | --- |
+| `$model-route` | Recommend, execute, or audit the lowest-cost credible model, reasoning, and concrete agent/thread route. | Exact root, explorer, writer, reviewer, model, reasoning, wave, and validation assignments. |
+
+`model-route` is explicitly invoked. It composes after the relevant orientation, exploration, shaping, and decomposition work and before material execution when routing is worth deciding. It is not a mandatory workflow stage and does not replace existing execution skills.
+
+```text
+$model-route Recommend the model, reasoning effort, and agent/thread route for this task. Do not execute it.
+$model-route Route and execute this bounded change. Use one writer and proportionate validation.
+$model-route Audit whether the route used for this completed task was proportionate to its outcome and risk.
+```
+
+Parallel work is limited to genuinely independent streams. Overlapping implementation stays under one writer, and material work receives independent review. Current models, reasoning support, availability, credits, API prices, and the update procedure live in the [model catalogue](skills/ai/model-route/references/model-catalog.md). Organization and repository policy override its generic recommendations.
+
+The default intensity routing is explicit:
+
+| Intensity | Agent route | Reasoning |
+| --- | --- | --- |
+| T0 Exact | Root/`default`; no child | Low/Light |
+| T1 Routine | `default` root; optional `explorer`; one `worker` | Medium |
+| T2 Demanding | `default` root; `explorer`; one `worker`; reviewer if material | High writer; medium explorer; high reviewer |
+| T3 Critical | Frontier `default` lead; one `worker` or custom specialist; separate reviewer | High lead; xhigh writer; high reviewer |
+| T4 Exceptional coupled | Root/`default` is sole writer; separate reviewer | Max root; high/xhigh reviewer |
+| T5 Broad independent | `default` orchestrator; one `explorer` or `worker` per independent stream | High root; each child routed at T1-T3; Ultra only after its gate |
+
+See the [orchestration patterns](skills/ai/model-route/references/orchestration-patterns.md#task-intensity-route-examples) for the exact agent contracts and examples.
+
+For managed organizational distribution, package the skill as a plugin when that becomes useful; this repository keeps it as a directly authored skill.
 
 ## Recommended Order
 
@@ -53,6 +90,8 @@ For a ready-made issue, ticket, or slice:
 /deliver-the-slice
 ```
 
+When a material task needs an explicit model, thread, parallelism, or review decision, invoke `$model-route` after the brief or slices are trustworthy and before execution.
+
 ## How To Choose The Entry Point
 
 Start with `set-the-rails` when the project machinery is unclear. Use it when no one has agreed where work lives, where decisions are recorded, what "done" means, or who reviews what.
@@ -64,6 +103,8 @@ Start with `write-the-brief` when the decisions are mostly resolved and you need
 Start with `slice-the-work` when you have a brief or plan and need small, reviewable slices. Each slice should produce something visible or verifiable.
 
 Start with `deliver-the-slice` when one slice is already clear enough to build, verify, review, and record as complete.
+
+Invoke `$model-route` when model cost, reasoning depth, delegation, parallel workstreams, one-writer control, or independent-agent review needs an explicit decision. Skip it for ordinary low-risk work with no meaningful routing choice.
 
 ## Loading Guidance
 
@@ -79,10 +120,20 @@ When in doubt:
 4. If the brief is clear but the work is too large, run `slice-the-work`.
 5. If a slice is clear and ready, run `deliver-the-slice`.
 
+Insert `$model-route` between decomposition and execution only when routing is material.
+
 ## Repo Structure
 
 ```text
 skills/
+  ai/
+    model-route/
+      SKILL.md
+      agents/
+        openai.yaml
+      references/
+        model-catalog.md
+        orchestration-patterns.md
   workflow/
     set-the-rails/
       SKILL.md
@@ -95,17 +146,21 @@ skills/
     deliver-the-slice/
       SKILL.md
   universal/
-    stress-test-the-plan/
-      SKILL.md
-    clarify-the-aim/
-      SKILL.md
     orient-the-field/
-      SKILL.md
+    clarify-the-aim/
+    explore-the-terrain/
+    shape-the-brief/
+    carve-the-path/
+    arrange-the-space/
+    carry-the-step/
+    practice-the-skill/
+    stress-test-the-plan/
 ```
 
 ## Design Notes
 
-- The workflow skills are user-invoked with `disable-model-invocation: true`; universal skills may trigger from their descriptions.
+- The workflow skills use the repository's legacy `disable-model-invocation: true` convention; universal skills may trigger from their descriptions.
+- `model-route` uses the current `agents/openai.yaml` policy `allow_implicit_invocation: false`, so `$model-route` remains explicit-only.
 - The pack is intentionally broad enough for non-code work and strict enough to prevent delivery drift.
 - The sequence favours evidence, review, and explicit completion records over internal activity.
 - Each skill should produce the smallest useful artifact for its stage.
