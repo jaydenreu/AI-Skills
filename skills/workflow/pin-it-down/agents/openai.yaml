@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pin It Down"
+  short_description: "Resolve ambiguity before delivery"
+  default_prompt: "Use $pin-it-down to resolve delivery-changing ambiguity one question at a time."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,113 +1,27 @@
 ---
 name: pin-it-down
-description: Relentlessly interview before delivery. Grill the plan, question delivery-relevant assumptions, reduce ambiguity, and capture durable decisions.
-disable-model-invocation: true
+description: Resolve delivery-changing ambiguity and record durable decisions.
 ---
 
 # Pin It Down
 
-Purpose: make the work clear enough to execute without guessing by relentlessly questioning it until ambiguity is reduced.
+Interrogate a proposed delivery until execution no longer requires consequential guessing. Do not deliver the work.
 
-## Preflight
+Inspect available code, data, and documents before asking. Keep an ambiguity ledger:
 
-Before interviewing, check whether these are clear:
+`A1: <unknown> | delivery impact | recommended default | blocker/defaultable/deferrable`
 
-- source of truth
-- decision log
-- output/tracker location
-- done/review rules
+Ask one highest-impact question at a time, recommend an answer, explain why it matters in one sentence, then wait. Update the ledger after every answer; challenge vague terms and scope expansion.
 
-If clear, continue.
+Cover only decisions that can change outcome, users, behavior, interfaces or data, permissions, failure states, constraints, ownership, risk, sequencing, non-goals, evidence, rollout, or review. For software, include schema/access, API/UI behavior, migration, and tests only when relevant.
 
-If missing and the work is substantial, recommend `/set-the-rails` first. Do not run setup inside this skill unless asked.
-
-## Rules
-
-- Do not deliver the work.
-- Relentlessly interview and grill the user until delivery-relevant ambiguity is reduced.
-- Question everything that could change scope, behaviour, evidence, risk, sequencing, ownership, or done.
-- Keep an ambiguity ledger: blocker, defaultable, deferrable.
-- Ask one question at a time.
-- Recommend the answer before asking.
-- Use existing docs/data/code before asking when possible.
-- Challenge vague terms, hidden assumptions, weak defaults, and scope creep.
-- Capture only durable decisions.
-- Do not end while delivery blockers remain.
-
-## Ambiguity Loop
-
-Before the first question, inventory unresolved delivery decisions:
+Record durable choices in the agreed decision log as:
 
 ```md
-A1: <unknown> | impact: <delivery impact> | default: <recommendation> | status: blocker/defaultable/deferrable
-```
-
-Ask in dependency order, starting with the blocker that unlocks the most downstream decisions. Question every delivery-relevant assumption, one question at a time. After each answer, record the decision, accepted default, or deferral, then update the ledger. Ask a narrowing follow-up when an answer stays broad: "simple", "polished", "soon", "better", "good", "reasonable", "done". Stop only when blockers are resolved and remaining ambiguity is defaulted or deferred.
-
-## Cover
-
-Work the decision tree in dependency order. Skip irrelevant areas.
-
-- outcome
-- users/stakeholders
-- current state
-- target state
-- constraints
-- data, systems, tools, or processes involved
-- ownership and approvals
-- permissions, controls, or governance
-- edge cases, defaults, and failure states
-- non-goals
-- risks
-- evidence of success
-- rollout/order
-
-For software, also cover:
-
-- data/schema/RLS
-- backend/services/APIs
-- frontend/UI
-- tests/checks
-
-## Question format
-
-Use this format:
-
-```md
-I recommend: <clear default>.
-Why it matters: <one sentence>.
-Question: <one direct question>.
-```
-
-Wait after each question.
-
-## Capture
-
-Use the agreed decision log.
-
-For repos, prefer:
-
-- `CONTEXT.md` for glossary terms only
-- `docs/adr/` for hard-to-reverse architecture decisions
-- `docs/decisions/<work>.md` for feature/project decisions
-
-Decision format:
-
-```md
-### DEC-001 - <name>
+### DEC-001 — <name>
 Decision:
 Requirement:
 Evidence:
 ```
 
-Keep entries short. Do not turn the decision log into a brief, PRD, backlog, or scratchpad.
-
-## Done
-
-Return:
-
-- resolved decisions
-- open decisions
-- remaining ambiguity by blocker/defaultable/deferrable status
-- decision IDs
-- recommended next command, usually `/write-the-brief`
+Finish only when blockers are resolved and remaining ambiguity is accepted as defaultable or deferrable. Return decision IDs, open items by status, and the next step—normally `write-the-brief`.

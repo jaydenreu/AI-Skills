@@ -1,101 +1,30 @@
 ---
 name: set-the-rails
-description: Configure a project or workspace so agents know the source of truth, decision log, tracker, standards, and done rules.
-disable-model-invocation: true
+description: Set a project's tracker, source of truth, decision log, standards, reviewers, and done rules.
 ---
 
 # Set The Rails
 
-Purpose: interview the workspace, not the work. Establish how delivery will be managed.
+Configure how work is managed; do not deliver project work. Inspect existing tools and docs first, reuse the authoritative ones, and avoid duplicate agent guidance.
 
-## Use when
+Track unresolved setup choices as `R1: <choice> | impact | recommended default | blocker/defaultable/deferrable`. Resolve blockers one section at a time.
 
-- starting a new repo, project, team workflow, or workspace
-- source of truth, tracker, decision log, or done rules are unclear
-- moving this workflow into a new business, client, or org context
+## Process
 
-## Rules
-
-- Do not deliver project work.
-- Explore before deciding.
-- Keep a missing-rails ledger: blocker, defaultable, deferrable.
-- Ask one setup section at a time.
-- Reuse existing docs/tools. Do not create duplicates.
-- Keep public docs generic. Keep employer/client-specific details private unless approved.
-- Do not finish while source of truth, decision log, or done rules are blockers.
-
-## Missing Rails Loop
-
-Before deciding, list unresolved setup choices:
+1. Locate the tracker, source of truth, decision and glossary locations, standards, statuses, owners, review path, and completion evidence.
+2. Recommend defaults for missing rails and ask only choices that materially affect coordination.
+3. Update the smallest existing workflow or agent document. Keep private organizational details out of public docs unless approved.
+4. Record the resulting contract:
 
 ```md
-R1: <unknown> | impact: <coordination impact> | default: <recommendation> | status: blocker/defaultable/deferrable
+Tracker:
+Source of truth:
+Decisions / glossary:
+Statuses:
+Standards:
+Reviewers:
+Done requires:
+Evidence location:
 ```
 
-Resolve blockers first, update the ledger after each answer, and keep asking one setup section at a time until all blockers are resolved.
-
-## Explore
-
-Find the current rails:
-
-- work tracker: GitHub, GitLab, Jira, Linear, local docs, spreadsheet, email, other
-- source of truth: repo docs, Notion, Confluence, Drive, SharePoint, local docs, other
-- decision log: decision docs, ADRs, tracker comments, meeting notes, other
-- standards: coding, reporting, process, comms, governance, review rules
-- statuses/labels: triage, blocked, ready, in progress, review, done
-- owners/reviewers
-- glossary/domain docs
-
-## Decide
-
-Lock in:
-
-1. Where work lives.
-2. Where durable decisions live.
-3. Where glossary/domain language lives.
-4. What statuses/labels mean.
-5. What "done" requires.
-6. Who reviews what.
-7. Where completion evidence is recorded.
-
-## Write
-
-Create or update the smallest useful setup docs.
-
-For repos, prefer:
-
-- existing `AGENTS.md`, `CLAUDE.md`, or equivalent agent file
-- `docs/agents/workflow.md`
-- `docs/decisions/`
-- `CONTEXT.md`
-
-For non-code workspaces, use the agreed source of truth.
-
-Do not create duplicate agent docs. Update the existing one if present.
-
-Suggested repo note:
-
-```md
-## Agent workflow
-
-Work tracker: <location>
-Source of truth: <location>
-Decision log: <location>
-Glossary/domain docs: <location>
-Standards: <location>
-Done requires: <evidence/review/checks>
-```
-
-## Done
-
-Return:
-
-- work tracker
-- source of truth
-- decision log location
-- glossary/domain location
-- status/label meanings
-- review/done rules
-- remaining missing rails, if any, with blocker/defaultable/deferrable status
-- changed files/docs
-- recommended next command
+Finish when the source of truth, decision capture, review path, and done rules are resolved or explicitly deferred. Return the contract, changed locations, and remaining gaps by status.

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Write The Brief"
+  short_description: "Create a concise delivery brief"
+  default_prompt: "Use $write-the-brief to turn the accepted decisions into an execution-ready brief."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,7 +1,7 @@
 interface:
   display_name: "Deliver The Slice"
   short_description: "Execute one routed slice with evidence"
-  default_prompt: "Use $deliver-the-slice to execute one routed issue, honor its $model-route assignments, validate it, and record the routing outcome."
+  default_prompt: "Use $deliver-the-slice to execute this routed issue, validate it, and record completion."
 
 policy:
   allow_implicit_invocation: false

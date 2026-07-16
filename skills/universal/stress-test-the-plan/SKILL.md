@@ -1,53 +1,14 @@
 ---
 name: stress-test-the-plan
-description: Stress-test a plan or design before building. Use when the user wants a relentless interview to sharpen a plan, expose hidden assumptions, resolve blockers, or pressure-test a design.
+description: Stress-test a plan through a relentless one-question-at-a-time interview. Use before building when assumptions, risks, dependencies, failure modes, or ownership need pressure-testing.
 ---
 
 # Stress Test The Plan
 
-Purpose: stress-test a plan until blockers are resolved and remaining ambiguity is explicit.
+Pressure-test the plan without building it. Inspect its code, data, documents, and evidence before asking.
 
-## Rules
+Maintain `A1: <unknown> | plan impact | recommended default | blocker/defaultable/deferrable`. Ask the blocker that unlocks the most downstream decisions, one question at a time; recommend an answer, explain why it matters in one sentence, then wait and update the ledger.
 
-- Do not build the plan.
-- Use code, docs, data, or artifacts before asking when possible.
-- Ask one question at a time and wait.
-- Recommend an answer with each question.
-- Keep an ambiguity ledger: blocker, defaultable, deferrable.
-- Challenge vague terms, hidden assumptions, weak defaults, scope creep, and unowned risks.
-- Do not finish while blockers remain.
+Probe only relevant branches: objective and audience, assumptions and invariants, alternatives, constraints and non-goals, dependencies and sequencing, ownership, permissions, risk, edge/failure states, observability, rollback, evidence, and review. Challenge contradictions, vague terms, unowned risk, and optimistic defaults.
 
-## Ambiguity Loop
-
-Before the first question, inventory unclear decisions:
-
-```md
-A1: <unknown> | impact: <why it matters> | default: <recommendation> | status: blocker/defaultable/deferrable
-```
-
-Ask in dependency order, starting with the blocker that unlocks the most downstream decisions. After each answer, record the decision, default, or deferral, then update the ledger. Ask a narrowing follow-up when an answer stays broad: "simple", "polished", "soon", "better", "good", "reasonable", "done". Stop only when blockers are resolved and remaining ambiguity is defaulted or deferred.
-
-## Cover
-
-Walk only relevant branches:
-
-- goal, audience, current state, target state
-- constraints, risks, permissions, non-goals
-- core design choices and rejected alternatives
-- systems, tools, data, people, or materials
-- edge cases, defaults, failure states
-- evidence, sequencing, ownership, review path
-
-For software, cover data/schema, backend/API, frontend/UI, tests/checks, migration, observability, and rollback when relevant.
-
-## Question Format
-
-```md
-I recommend: <clear default>.
-Why it matters: <one sentence>.
-Question: <one direct question>.
-```
-
-## Done
-
-Return resolved decisions, remaining ambiguity by status, accepted defaults, risks, and next step.
+Finish only when blockers are resolved and remaining uncertainty is explicitly accepted, defaulted, or deferred. Return resolved decisions, accepted defaults, remaining ambiguity by status, risks, and the next step.

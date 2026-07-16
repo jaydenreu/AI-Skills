@@ -1,7 +1,7 @@
 interface:
   display_name: "Model Route"
-  short_description: "Route models, agents, cost, and review"
-  default_prompt: "Use $model-route to write a current GPT-5.6 execution route into this task or issue, naming every agent, model, reasoning level, review, and validation assignment."
+  short_description: "Assign models, agents, review, and checks"
+  default_prompt: "Use $model-route to assign the GPT-5.6 model, reasoning, agents, review, and validation for this task or issue."
 
 policy:
   allow_implicit_invocation: false

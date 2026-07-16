@@ -1,0 +1,7 @@
+interface:
+  display_name: "Set The Rails"
+  short_description: "Set project workflow and done rules"
+  default_prompt: "Use $set-the-rails to define this project's source of truth, decisions, review path, and done rules."
+
+policy:
+  allow_implicit_invocation: false
