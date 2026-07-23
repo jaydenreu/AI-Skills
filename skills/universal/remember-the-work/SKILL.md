@@ -1,6 +1,6 @@
 ---
 name: remember-the-work
-description: Maintain repository memory for decisions, failed approaches, incidents, and reusable guardrails. Use before debugging or revisiting an issue, and after work produces a consequential decision, failure, or lesson.
+description: Maintain repository memory for decisions, failed approaches, incidents, and reusable guardrails. Use before revisiting an issue and after work produces a consequential decision, failure, or lesson.
 ---
 
 # Remember The Work
@@ -15,13 +15,13 @@ Honor `AGENTS.md` or the project contract. Otherwise use `docs/project-memory/IN
 
 Before a new hypothesis or consequential decision:
 
-1. Search the index, then records, by exact error, symptom, domain term, component/path, and issue or decision ID. Open only likely matches and canonical links.
+1. Search the index, then records, by exact error, symptom, domain term, component/path, and issue or decision ID.
 2. Verify status and applicability against current code, configuration, and evidence.
 3. Report matching IDs, guardrails, conflicts, and staleness. A verified no-match is valid.
 
 ## Capture
 
-Capture results that could prevent a future costly choice, failed attempt, or diagnosis. Update the closest record; otherwise assign the next `PM-NNNN` ID and add one index row.
+Capture results that could prevent a future costly choice, failure, or diagnosis. Update the closest record; otherwise assign the next `PM-NNNN` and add one index row. In orchestrated work, children return candidates; the parent writes after reconciliation.
 
 ```md
 # PM-NNNN — <title>
@@ -36,4 +36,4 @@ Guardrail / trigger: <future action>
 Links: <canonical and related IDs>
 ```
 
-Finish relevant tasks with `Memory: none — <reason> | recalled <IDs> | updated <IDs>`. Require evidence, no duplicated canonical decision, and no sensitive or hidden reasoning.
+Finish with `Memory: none — <reason> | recalled <IDs> | updated <IDs>`. Require evidence, no duplicated canonical decision, and no sensitive reasoning.

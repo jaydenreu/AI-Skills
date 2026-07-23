@@ -1,0 +1,4 @@
+interface:
+  display_name: "Start the Work"
+  short_description: "Route a repository into the right skill path"
+  default_prompt: "Use $start-the-work to inspect this repository and create the appropriate skill checklist."

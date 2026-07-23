@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orchestrate the Work"
+  short_description: "Coordinate child tasks and dependency waves"
+  default_prompt: "Use $orchestrate-the-work to execute this accepted work graph through coordinated child tasks."

@@ -1,7 +1,7 @@
 interface:
   display_name: "Slice The Work"
   short_description: "Create routed, agent-ready delivery issues"
-  default_prompt: "Use $slice-the-work to create vertical issues from this PRD, name justified exceptions, and route every accepted issue with $model-route."
+  default_prompt: "Use $slice-the-work to create vertical issues, name justified exceptions, assign dependency waves, and route every accepted issue and container with $model-route."
 
 policy:
   allow_implicit_invocation: false

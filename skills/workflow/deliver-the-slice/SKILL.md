@@ -1,29 +1,32 @@
 ---
 name: deliver-the-slice
-description: Execute one routed issue, verify it, review it, and record completion.
+description: Execute one routed issue, verify it, review it, and return completion evidence to its parent when delegated.
 ---
 
 # Deliver The Slice
 
-Deliver one issue without adjacent scope. Treat its brief, decisions, acceptance criteria, non-goals, and `Execution route` as authoritative.
+Deliver one issue without adjacent scope. Treat its brief, decisions, criteria, non-goals, execution route, and child contract as authoritative.
 
-Before writing, confirm the route still matches scope and materiality and names the model/reasoning, agents, review, and validation. Invoke `$model-route Recommend` only when it is missing, pending, stale enough to matter, or invalidated by changed requirements.
+Before writing, confirm the route still matches scope and names the container, writer, review, and validation. Invoke `$model-route` only when missing, pending, stale, or invalidated.
 
 ## Process
 
-1. Invoke `$remember-the-work` Recall with the issue's signals; state the outcome, intended route, write scope, evidence, and review plan.
-2. Make the smallest end-to-end change. Keep overlapping work under one writer and follow the routed dependency waves.
-3. Verify with the strongest practical check; for software, prefer a focused red → green → refactor loop and test behavior through a public seam.
-4. Check every acceptance criterion, then review separately for specification and project standards. Material work requires the routed independent reviewer and revalidation after corrections.
-5. Invoke `$remember-the-work` Capture when material, then update the issue and tracker with completion evidence and routing outcome:
+1. Invoke `$remember-the-work` Recall with the issue's signals; state outcome, route, scope, evidence, and review.
+2. If delegated, confirm parent, blockers, ownership, worktree, and return contract; report `started`.
+3. Make the smallest end-to-end change. Keep overlapping files, state, interfaces, and decisions under one writer.
+4. Verify with the strongest practical check; for software prefer a focused red → green → refactor loop through a public seam.
+5. Check every criterion, then review separately for specification and standards. Material work requires the routed independent reviewer and revalidation.
+6. If this task owns memory, invoke Capture; otherwise return candidates. Update the issue/tracker and parent:
 
 ```md
-Actual visible route:
-Deviations / unknowns:
-Review and corrections:
-Validation result:
-Memory: none — <reason> | recalled <IDs> | updated <IDs>
+Status: completed | needs-attention
+Outcome / criteria:
+Changed surfaces:
+Validation / review:
+Route deviations:
+Memory candidates or IDs:
 Safe to accept: yes | no — rationale
+Parent action:
 ```
 
-If evidence is blocked, report the blocker and tightest reliable proxy; never imply unrun checks passed. Finish with the outcome, criteria coverage, evidence, review result, route deviations, completion reference, and true follow-up only.
+If blocked, report the blocker and tightest reliable evidence; never imply an unrun check passed. Finish only after the parent return and completion reference are current.

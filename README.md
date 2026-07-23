@@ -1,20 +1,29 @@
 # AI Skills
 
-Portable, stage-specific skills for framing, planning, routing, and delivering software and knowledge work. Invoke the smallest skill that matches the current stage; do not load the whole library.
+Portable, stage-specific skills for framing, planning, routing, orchestrating, and delivering software and knowledge work. Invoke the smallest skill that matches the current stage; do not load the whole library.
 
 ## Skills
 
-### Routed delivery workflow
+### Entry and orchestration
 
-Use this opinionated, tracker-backed path to move software from delivery governance through a routed, reviewed issue.
+Start unfamiliar repositories by selecting a workflow and checked skill path; branch accepted independent work into observable child tasks only when routing and repository policy allow it.
 
 | Skill | Job | Completion artifact |
 | --- | --- | --- |
-| `set-the-rails` | Establish a user-confirmed tracker, source of truth, PRD location, AI routing policy, decisions, standards, review, and done rules. | Rails Contract |
+| `start-the-work` | Choose universal, routed delivery, or universal → delivery and maintain the gated skill checklist. | Work Path with one current skill |
+| `orchestrate-the-work` | Coordinate routed child tasks, dependency waves, status, integration, and return to the parent. | Verified parent outcome and thread ledger |
+
+### Routed delivery workflow
+
+Use this opinionated, tracker-backed path to move software from delivery governance through routed, reviewed, and traceable issues.
+
+| Skill | Job | Completion artifact |
+| --- | --- | --- |
+| `set-the-rails` | Establish tracker, source of truth, Work Path, AI routing, thread authority, review, and done rules. | User-confirmed Rails Contract |
 | `pin-it-down` | Resolve delivery-changing ambiguity through a decision-complete interview. | Durable decisions and open-item ledger |
 | `write-the-brief` | Publish accepted decisions as the canonical execution-ready PRD. | Canonical PRD |
-| `slice-the-work` | Create vertical issues and route every accepted issue with `$model-route`. | Ordered routed issues |
-| `deliver-the-slice` | Execute one routed issue, validate, review, and record completion. | Verified outcome and completion record |
+| `slice-the-work` | Create vertical issues, dependency waves, and routed execution containers. | Ordered routed issues |
+| `deliver-the-slice` | Execute one routed issue and return validation, review, and memory evidence to its parent. | Verified outcome and parent return |
 
 ### Universal workflow
 
@@ -37,44 +46,41 @@ Use these composable skills for any kind of work; enter at the current stage and
 
 | Skill | Job | Completion artifact |
 | --- | --- | --- |
-| `$model-route` | Assign GPT-5.6 models, reasoning, agents, review, and validation by task intensity. | Compact or full execution route |
+| `$model-route` | Assign GPT-5.6 models, reasoning, execution containers, agents, review, and validation. | Compact or full execution route |
 
-The maintained Luna/Terra/Sol and T0–T5 map lives in [`model-route/SKILL.md`](skills/ai/model-route/SKILL.md). Volatile pricing and availability are conditional reference material, not part of the routine routing path.
+The maintained Luna/Terra/Sol and T0–T5 map lives in [`model-route/SKILL.md`](skills/ai/model-route/SKILL.md). Volatile pricing and availability are conditional reference material, not part of routine routing.
 
 ## Composition
 
-Recommended routed delivery:
+Use `start-the-work` as the entrypoint when the correct path or current gate is not already established:
 
 ```text
-set-the-rails → pin-it-down → write-the-brief → slice-the-work
-               → $model-route Recommend → deliver-the-slice
+start-the-work
+├─ universal → orient / clarify / explore → shape → carve → carry
+├─ universal → delivery → explore / clarify → set-the-rails → routed delivery
+└─ routed delivery → set-the-rails → pin-it-down → write-the-brief
+                     → slice-the-work → $model-route Recommend
+                     → orchestrate-the-work when child tasks are routed
+                     → deliver-the-slice per issue → integrated review
 ```
 
-`write-the-brief` publishes the canonical PRD consumed by `slice-the-work`. `set-the-rails` records the applicable AI routing policy or explicit use of `$model-route` defaults; it does not route work.
+Skip a gate only when its artifact already exists and is trustworthy. The Work Path records the evidence and keeps exactly one skill current.
 
-`slice-the-work` invokes `$model-route` once for the accepted slice set and writes a route into every published issue. `deliver-the-slice` consumes that route and refreshes it only when missing, pending, materially stale, or invalidated by changed requirements. Delivery also invokes `remember-the-work` for recall and durable memory classification; it does not need a separate memory skill.
+`slice-the-work` routes every accepted issue through `$model-route`. `orchestrate-the-work` calls `$model-route` for the parent topology and each child, keeps the parent orchestration-only after branching, and requires every child to return status and evidence. Concurrent writers require isolated ownership and the Rails thread policy.
 
-Recommended universal path:
+`remember-the-work` crosses both paths. Children return memory candidates; the reconciled parent is the sole writer of durable project memory.
 
-```text
-orient-the-field → clarify-the-aim and/or explore-the-terrain
-                 → shape-the-brief → carve-the-path → carry-the-step
-```
-
-Skip any stage whose artifact already exists and is trustworthy. `arrange-the-space`, `practice-the-skill`, and `stress-test-the-plan` enter wherever their specific job is needed.
-
-`remember-the-work` is cross-cutting across both paths: use Recall before revisiting an issue or making a consequential decision, and Capture when work leaves a reusable decision, failure, incident, or guardrail.
-
-The paired skills are deliberate specializations, not dependencies:
+The paired skills are deliberate specializations:
 
 - `orient-the-field` is universal; `set-the-rails` is delivery-governance specific.
 - `clarify-the-aim` is broad; `pin-it-down` is the stricter delivery gate.
-- `shape-the-brief`/`carve-the-path`/`carry-the-step` are universal; `write-the-brief`/`slice-the-work`/`deliver-the-slice` produce tracker-ready routed delivery artifacts.
+- `shape-the-brief`/`carve-the-path`/`carry-the-step` are universal; `write-the-brief`/`slice-the-work`/`deliver-the-slice` produce tracker-ready delivery artifacts.
+- `model-route` decides compute and container; `orchestrate-the-work` executes the accepted topology.
 
 ## Invocation policy
 
-The five delivery workflow skills and `model-route` are explicit-only through `agents/openai.yaml`. Universal skills may be invoked from their trigger descriptions. Every skill remains independently usable except the intentional routed-issue handoff described above.
+The five delivery skills and `model-route` are explicit-only through `agents/openai.yaml`. `start-the-work` is model-invoked for unfamiliar or unconfigured repositories; `orchestrate-the-work` is reachable when an accepted route requires child tasks. Child-task creation must honor the Rails Contract's thread authority.
 
 ## Authoring rule
 
-Keep each `SKILL.md` to its irreducible procedure and checkable completion gate. Default budgets are 250 words for an ordinary skill and 900 for `model-route`; exceed them only when a behavior cannot be disclosed conditionally. Put volatile or branch-only facts behind conditional references, keep one source of truth per rule, and remove examples or prose that do not change behavior. Validate every changed skill and forward-test material workflow changes.
+Keep each `SKILL.md` to its irreducible procedure and checkable completion gate. Default budgets are 250 words for an ordinary skill and 900 for `model-route`; exceed them only when behavior cannot be disclosed conditionally. Put branch-only facts behind references, keep one source of truth per rule, and remove prose that does not change behavior. Validate every changed skill and forward-test material workflow changes.
