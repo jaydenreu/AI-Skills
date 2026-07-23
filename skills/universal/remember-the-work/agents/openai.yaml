@@ -1,0 +1,4 @@
+interface:
+  display_name: "Remember the Work"
+  short_description: "Reuse and record durable project memory"
+  default_prompt: "Use $remember-the-work to check prior project history and capture any durable lesson from this work."
