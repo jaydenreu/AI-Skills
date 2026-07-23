@@ -11,17 +11,18 @@ Before writing, confirm the route still matches scope and materiality and names 
 
 ## Process
 
-1. Inspect current state and state the outcome, intended route, write scope, evidence, and review plan.
+1. Invoke `$remember-the-work` Recall with the issue's signals; state the outcome, intended route, write scope, evidence, and review plan.
 2. Make the smallest end-to-end change. Keep overlapping work under one writer and follow the routed dependency waves.
 3. Verify with the strongest practical check; for software, prefer a focused red → green → refactor loop and test behavior through a public seam.
 4. Check every acceptance criterion, then review separately for specification and project standards. Material work requires the routed independent reviewer and revalidation after corrections.
-5. Update the issue and tracker with the completion evidence and routing outcome:
+5. Invoke `$remember-the-work` Capture when material, then update the issue and tracker with completion evidence and routing outcome:
 
 ```md
 Actual visible route:
 Deviations / unknowns:
 Review and corrections:
 Validation result:
+Memory: none — <reason> | recalled <IDs> | updated <IDs>
 Safe to accept: yes | no — rationale
 ```
 

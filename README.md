@@ -6,6 +6,8 @@ Portable, stage-specific skills for framing, planning, routing, and delivering s
 
 ### Routed delivery workflow
 
+Use this opinionated, tracker-backed path to move software from delivery governance through a routed, reviewed issue.
+
 | Skill | Job | Completion artifact |
 | --- | --- | --- |
 | `set-the-rails` | Establish a user-confirmed tracker, source of truth, PRD location, AI routing policy, decisions, standards, review, and done rules. | Rails Contract |
@@ -15,6 +17,8 @@ Portable, stage-specific skills for framing, planning, routing, and delivering s
 | `deliver-the-slice` | Execute one routed issue, validate, review, and record completion. | Verified outcome and completion record |
 
 ### Universal workflow
+
+Use these composable skills for any kind of work; enter at the current stage and combine only what the endeavor needs.
 
 | Skill | Job | Completion artifact |
 | --- | --- | --- |
@@ -48,7 +52,7 @@ set-the-rails → pin-it-down → write-the-brief → slice-the-work
 
 `write-the-brief` publishes the canonical PRD consumed by `slice-the-work`. `set-the-rails` records the applicable AI routing policy or explicit use of `$model-route` defaults; it does not route work.
 
-`slice-the-work` invokes `$model-route` once for the accepted slice set and writes a route into every published issue. `deliver-the-slice` consumes that route and refreshes it only when missing, pending, materially stale, or invalidated by changed requirements. This is the library's only required cross-skill integration.
+`slice-the-work` invokes `$model-route` once for the accepted slice set and writes a route into every published issue. `deliver-the-slice` consumes that route and refreshes it only when missing, pending, materially stale, or invalidated by changed requirements. Delivery also invokes `remember-the-work` for recall and durable memory classification; it does not need a separate memory skill.
 
 Recommended universal path:
 
@@ -59,7 +63,7 @@ orient-the-field → clarify-the-aim and/or explore-the-terrain
 
 Skip any stage whose artifact already exists and is trustworthy. `arrange-the-space`, `practice-the-skill`, and `stress-test-the-plan` enter wherever their specific job is needed.
 
-`remember-the-work` is cross-cutting: use Recall before revisiting an issue or making a consequential decision, and Capture when work leaves a reusable decision, failure, incident, or guardrail.
+`remember-the-work` is cross-cutting across both paths: use Recall before revisiting an issue or making a consequential decision, and Capture when work leaves a reusable decision, failure, incident, or guardrail.
 
 The paired skills are deliberate specializations, not dependencies:
 
