@@ -24,6 +24,7 @@ Portable, stage-specific skills for framing, planning, routing, and delivering s
 | `shape-the-brief` | Turn resolved context into an action brief. | Brief with evidence and first step |
 | `carve-the-path` | Break large work into verifiable steps. | Ordered AFK/HITL path |
 | `carry-the-step` | Complete one focused step with proof. | Verified result and durable record |
+| `remember-the-work` | Recall prior decisions and failures, then preserve reusable lessons. | Search result and memory classification |
 | `arrange-the-space` | Reduce workspace friction and define reset defaults. | Workspace layout and reset routine |
 | `practice-the-skill` | Build ability through deliberate practice. | Practice loop and progression gate |
 | `stress-test-the-plan` | Pressure-test assumptions, dependencies, risks, and failure modes. | Resolved decisions and residual risks |
@@ -57,6 +58,8 @@ orient-the-field → clarify-the-aim and/or explore-the-terrain
 ```
 
 Skip any stage whose artifact already exists and is trustworthy. `arrange-the-space`, `practice-the-skill`, and `stress-test-the-plan` enter wherever their specific job is needed.
+
+`remember-the-work` is cross-cutting: use Recall before revisiting an issue or making a consequential decision, and Capture when work leaves a reusable decision, failure, incident, or guardrail.
 
 The paired skills are deliberate specializations, not dependencies:
 
